@@ -49,7 +49,6 @@ export const reducer = (state= initialState, action) => {
                 ...state,
                 isLoading: false,
                 users: [
-                    ...state,
                     action.payload
                 ]
             };

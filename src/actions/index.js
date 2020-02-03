@@ -9,7 +9,9 @@ export const addUser = data => dispatch => {
         .post('https://issw.herokuapp.com/api/auth/register', data)
         .then(res => {
             console.log("CreateUser register: ", res);
+            localStorage.setItem("token", res.data.token);
             dispatch({ type: "ADDING_USER_SUCCESS", payload: res.data })
+            
         })
         .catch(err => {
             console.log(err);
@@ -19,13 +21,14 @@ export const addUser = data => dispatch => {
 
 export const loginUser = data => dispatch => {
     dispatch( { type: "LOGIN_USER_START" });
+    console.log("Login User Data: ", data);
     axios
         .post('https://issw.herokuapp.com/api/auth/login', data)
         .then(res => {
             console.log("LoginUser: ", res.data);
             localStorage.setItem("token", res.data.token);
-            dispatch({ type: "LOGIN_USER_SUCCESS" });
-
+            dispatch({ type: "LOGIN_USER_SUCCESS" })
+            // props.history.push("/main");
         })
         .catch(err => {
             console.log(err);
