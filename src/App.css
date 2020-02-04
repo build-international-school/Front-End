@@ -2,37 +2,83 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.top-label {
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.students-container {
+  margin: 0 auto;
+  border: 2px solid grey;
+  padding: 2%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.students-container h1 {
+  font-size: 3rem;
+}
+
+.student-list {
+  margin: 0 auto;
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 80%;
+  border: 1px solid blue;
+}
+
+.student-div {
+  margin: 1%;
+  width: 25%;
+  border: 1px solid pink;
+}
+
+.all-students {
+  margin: 0 auto;
+  height: 150px;
+  width: 100%;
+  border: 1px solid grey;
+  overflow-y: scroll;
+}
+
+.student-header {
+  position: sticky;
+  top: 0;
+}
+
+.main-page-div {
+  display: flex;
+  width: 95%;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.placement {
+  width: 15%;
+}
+
+.main-info {
+  width: 70%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+.main-info-top {
+  display: flex;
+  justify-content: space-between;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.org-div {
+  width: 45%
+}
+
+.visit-div {
+  border: 1px solid grey;
+  width: 40%;
+}
+.total-div {
+  border: 1px solid grey;
+  width: 10%;
+  margin: 0 0 0 5%;
 }

@@ -1,9 +1,7 @@
 // Create a new admin or worker
 
 import React, { useState } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-
 import { addUser } from '../actions';
 
 const CreateUser = props => {
@@ -63,7 +61,7 @@ const CreateUser = props => {
         //axios POST here to create a user to https://issw.herokuapp.com/api/auth/register
         if (newPassword === verify) {
             console.log(newData);
-            props.addUser(newData);
+            props.addUser(props, newData);
         } else {
             console.log("The passwords must match!");
         }
