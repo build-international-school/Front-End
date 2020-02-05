@@ -24,7 +24,8 @@ const MainPage = props => {
     return(
         
         <div className="main-page-div">
-            <div className="top-label"><p>Hello, {user.first_name} | <a href="/login" onClick={handleSignout}>Log Out</a></p></div>
+            {/* replaced  {user.first_name} with "Mandi" */}
+            <div className="top-label"><p>Hello, Mandi| <a href="/login" onClick={handleSignout}>Log Out</a></p></div>
             <div className="placement">
                 <div className="active">
                     <span>Main</span>
@@ -42,7 +43,8 @@ const MainPage = props => {
             <div className="main-info">
                 <div className="main-info-top">
                     <div className="org-div">
-                        <h2>{user.organization}</h2>
+                        {/*removed {user.organization} and replaced with Lambda School*/}
+                        <h2>Lamda School</h2>
                     </div>
                     <div className="visit-div">
                         <p>Visits will go here.</p>
