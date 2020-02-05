@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { getStudents } from '../actions';
+import SideBar from './SideBar';
 
 const MainPage = props => {
     // console.log("in main - currentUser: ", props.currentUser);
@@ -27,18 +28,7 @@ const MainPage = props => {
             {/* replaced  {user.first_name} with "Mandi" */}
             <div className="top-label"><p>Hello, Mandi| <a href="/login" onClick={handleSignout}>Log Out</a></p></div>
             <div className="placement">
-                <div className="active">
-                    <span>Main</span>
-                </div>
-                <div className="inactive">
-                    <span>Classes</span>
-                </div>
-                <div className="inactive">
-                    <span>Class View</span>
-                </div>
-                <div className="inactive">
-                    <span>Student View</span>
-                </div>
+                <SideBar active={"main"} />
             </div>
             <div className="main-info">
                 <div className="main-info-top">

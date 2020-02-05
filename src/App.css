@@ -57,6 +57,14 @@
   width: 15%;
 }
 
+.side {
+  color: blue;
+}
+
+.side-active {
+  color: orangered;
+}
+
 .main-info {
   width: 70%;
   display: flex;

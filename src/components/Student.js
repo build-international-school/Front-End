@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useParams } from 'react-router-dom';
 
-
-const Student =(props) => {
+const Student =  props => {
     console.log("first name",props)
     // const [student, setStudent] = useState();
     // let {id} = useParams();
@@ -27,6 +26,9 @@ const Student =(props) => {
 
 // const { first_name, last_name, grade, age, status } = student; 
 //     console.log("In Student: ", props.student);
+
+    console.log("In Student: ", props);
+
     return (
         
         <div className="save-wrapper">
