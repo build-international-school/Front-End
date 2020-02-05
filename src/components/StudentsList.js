@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { Link, Route } from 'react-router-dom';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Student from "./Student";
 
@@ -51,7 +51,7 @@ useEffect(()=> {
        axiosWithAuth()
         .get('https://issw.herokuapp.com/api/students')
         .then(response =>{
-            console.log(response.data);
+            console.log("This is from the axios call",response.data);
             setStudents(response.data);
         })
         .catch(error =>{
@@ -64,18 +64,41 @@ useEffect(()=> {
 console.log("students",students)
     return (
 <div className="student-list">
-        <Student first_name={students.first_name}/>
-        {/* {students.map(student => (
-        <div>
-        <h2>First Name: {student.first_name}</h2>
-        <h2>Last Name: {student.last_name}</h2>
-        <h3>Grade: {student.grade} | Age: {student.age}</h3>
-        <h3>Status: {student.status}</h3>
-        <p>{student.id}</p>
-        </div>
+    {students.map (student =>(
+        <Link to= {`/student/${student.id}`}>
+        <Student student={student}/>
+        </Link>
+    )
+    )}
+    
 
-        ))}; */}
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {/* {students.map(student => (
+            <Link to={`/student/${student.id}`}>
+        <Student data={student}/>
+        </Link> */}
+    
+    
+        {/* ))};
+        <Route path={"/student/:id"} component={Student}/> */}
     
 </div>
     )
