@@ -20,6 +20,23 @@ const initialState = {
             representative_contact: ''
         }
     ],
+    currentStudent: {
+        id: null,
+        first_name: '',
+        last_name: '',
+        grade: '',
+        address: '',
+        img_url: '',
+        background: '',
+        status: '',
+        age: '',
+        insurance: false,
+        exp_date: '',
+        birth_certificate: true,
+        special_needs: '',
+        representative_name: '',
+        representative_contact: ''
+    },
     users: [
         {
             id: null,
@@ -98,12 +115,13 @@ export const reducer = (state= initialState, action) => {
         case "GET_ONE_STUDENT_START":
             return {
                 ...state,
-                isLoading: true
+                isLoading: true 
             }
         case "GET_ONE_STUDENT_SUCCESS":
             return {
                 ...state,
-                isLoading: false
+                isLoading: false,
+                currentStudent: action.payload
             }
         default:
             return state;

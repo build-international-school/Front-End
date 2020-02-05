@@ -2,7 +2,7 @@
 import React from 'react';
 
 const Student =  props => {
-//     console.log("In Student: ", props.student);
+    console.log("In Student: ", props);
     return (
         <div>
             This is a student.
