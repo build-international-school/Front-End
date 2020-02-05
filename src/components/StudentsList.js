@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Student from "./Student";
 
 // const dummyStudents =[
 //     {
@@ -63,8 +64,8 @@ useEffect(()=> {
 console.log("students",students)
     return (
 <div className="student-list">
-        
-        {students.map(student => (
+        <Student first_name={students.first_name}/>
+        {/* {students.map(student => (
         <div>
         <h2>First Name: {student.first_name}</h2>
         <h2>Last Name: {student.last_name}</h2>
@@ -73,7 +74,7 @@ console.log("students",students)
         <p>{student.id}</p>
         </div>
 
-        ))};
+        ))}; */}
         
     
 </div>
