@@ -37,7 +37,7 @@ export const loginUser = (props, data) => dispatch => {
         })
 }
 
-export const getStudents = (props, data) => dispatch => {
+export const getStudents = () => dispatch => {
     dispatch({ type: "GET_STUDENTS_START" });
     axiosWithAuth()
         .get('https://issw.herokuapp.com/api/students')
@@ -50,12 +50,13 @@ export const getStudents = (props, data) => dispatch => {
         })
 }
 
-export const getOneStudent = (props, data) => dispatch => {
+export const getOneStudent = (id) => dispatch => {
     dispatch({ type: "GET_ONE_STUDENT_START" });
-    axiosWithAuth()
-        .get(`https://issw.herokuapp.com/api/students/${data.student.id}`)
+    return axiosWithAuth()
+        .get(`https://issw.herokuapp.com/api/students/${id}`)
         .then(res => {
-            console.log("GetOneStudent: ", res);
+            console.log("GetOneStudent: ", res.data);
+            dispatch({ type: "GET_ONE_STUDENT_SUCCESS", payload: res.data })
         })
         .catch(err => {
             console.log(err);
