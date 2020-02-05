@@ -6,7 +6,7 @@ import CreateUser from './components/CreateUser';
 import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
 import MainPage from './components/MainPage';
-
+import Student from "./components/Student";
 import StudentsList from './components/StudentsList';
 import StudentsList2 from './components/StudentsList2';
 

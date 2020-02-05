@@ -1,10 +1,12 @@
 // // Individual student information (edit and delete will live here too)
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Student =  props => {
+const { first_name, last_name, grade, age, status} =  () => {
 //     console.log("In Student: ", props.student);
     return (
-        <div>
+        <div className="save-wrapper">
+            <div className="student-card">
+                <h2></h2>
             This is a student.
         </div>
 //         <div>

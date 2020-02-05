@@ -66,9 +66,10 @@ console.log("students",students)
         
         {students.map(student => (
         <div>
-        <h2>{student.first_name}</h2>
-        <h3>{student.grade} | {student.age}</h3>
-        <h3>{student.status}</h3>
+        <h2>First Name: {student.first_name}</h2>
+        <h2>Last Name: {student.last_name}</h2>
+        <h3>Grade: {student.grade} | Age: {student.age}</h3>
+        <h3>Status: {student.status}</h3>
         </div>
 
         ))};
