@@ -24,8 +24,7 @@ const Login = props => {
 
     const handleLogin = e => {
         e.preventDefault();
-        props.loginUser(loginData);
-        props.history.push("/main");
+        props.loginUser(props, loginData);
     }
 
     return(
