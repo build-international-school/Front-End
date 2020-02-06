@@ -2,6 +2,8 @@
 // name will change, and more actions files added later maybe
 
 import axios from 'axios';
+
+import { connect } from 'react-redux';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export const addUser = (props, data) => dispatch => {
@@ -11,6 +13,7 @@ export const addUser = (props, data) => dispatch => {
         .then(res => {
             console.log("CreateUser register: ", res);
             localStorage.setItem("token", res.data.token);
+            localStorage.setItem("currentUser", JSON.stringify(res.data));
             dispatch({ type: "ADDING_USER_SUCCESS", payload: res.data })
             props.history.push("/main");
         })
@@ -18,6 +21,32 @@ export const addUser = (props, data) => dispatch => {
             console.log(err);
             dispatch({ type: "ADDING_USER_ERROR", payload: err.message })
     })
+}
+
+export const getWorkers = () => dispatch => {
+    dispatch({ type: "GET_WORKERS_START" });
+    axiosWithAuth()
+        .get('https://issw.herokuapp.com/api/workers')
+        .then(res => {
+            console.log('Get Workers: ', res)
+            dispatch({ type: "GET_WORKERS_SUCCESS", payload: res.data })
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+export const getAdmins = () => dispatch => {
+    dispatch({ type: "GET_ADMINS_START" });
+    axiosWithAuth()
+        .get('https://issw.herokuapp.com/api/admins')
+        .then(res => {
+            console.log('Get Admins: ', res)
+            dispatch({ type: "GET_ADMINS_SUCCESS", payload: res.data })
+        })
+        .catch(err => {
+            console.log(err);
+        })
 }
 
 export const loginUser = (props, data) => dispatch => {
@@ -104,20 +133,7 @@ export const deleteStudent = (id) => dispatch => {
     })
 }
 
-/*
-export const addUser = (props, data) => dispatch => {
-    dispatch({ type: "ADDING_USER_START" });
-    axios
-        .post('https://issw.herokuapp.com/api/auth/register', data)
-        .then(res => {
-            console.log("CreateUser register: ", res);
-            localStorage.setItem("token", res.data.token);
-            dispatch({ type: "ADDING_USER_SUCCESS", payload: res.data })
-            props.history.push("/main");
-        })
-        .catch(err => {
-            console.log(err);
-            dispatch({ type: "ADDING_USER_ERROR", payload: err.message })
-    })
+export const createOrgsList = (orgs) => dispatch => {
+    dispatch({ type: "CREATE_ORGS_LIST", payload: orgs })
+    localStorage.setItem("orgs", JSON.stringify(orgs));
 }
-*/

@@ -5,18 +5,18 @@ import Student from "./Student";
 import styled from "styled-components";
 
 const StudentDiv= styled.div`
-background-color: blue;
+// background-color: blue;
 `;
 
 const  StudentCard=styled.div`
-height: 200px:
-width: 200px;
-padding: 10px;
-background-color: pink;
-border-style: solid;
-border-width: 3px;
-border-color: black; 
-border-radius:5px;
+// height: 200px:
+// width: 200px;
+// padding: 10px;
+// background-color: pink;
+// border-style: solid;
+// border-width: 3px;
+// border-color: black; 
+// border-radius:5px;
 `;
 const Students =() => {
     const [students, setStudents] =useState([]);

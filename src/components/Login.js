@@ -12,7 +12,6 @@ const Login = props => {
     const handleEmailChanges = e => {
         setLoginEmail(e.target.value);
     }
-
     const handlePasswordChanges = e => {
         setLoginPassword(e.target.value);
     }
@@ -39,7 +38,9 @@ const Login = props => {
                             name="email"
                             value={loginData.email}
                             onChange={handleEmailChanges}
-                        />
+                            placeholder='email@email.com'
+                            required
+                        /> <span className="req">*</span>
                     </label>
                     <label>
                         Password:
@@ -48,7 +49,9 @@ const Login = props => {
                             name="password"
                             value={loginData.password}
                             onChange={handlePasswordChanges}
-                        />
+                            placeholder="8 character minimum"
+                            required
+                        /> <span className="req">*</span>
                     </label>
                 </div>
                 <button>Login!</button>
