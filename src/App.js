@@ -45,6 +45,7 @@ function App() {
         <PrivateRoute exact path='/add-student2' component={AddStudent2} />
         <PrivateRoute exact path='/edit-student/:id' component={EditStudent} />
         <PrivateRoute path='/main' component={MainPage} />
+        <Route exact path='/AddStudent' component={AddStudent} />
       </div>
     </Router>
   );
