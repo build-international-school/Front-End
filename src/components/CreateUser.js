@@ -14,9 +14,8 @@ const CreateUser = props => {
     const [newPhone, setNewPhone] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [verify, setVerify] = useState('');
-    const [newType, setNewType] = useState('');
+    const [newType, setNewType] = useState(3);
     const [newOrganization, setNewOrganization] = useState('');
-    const [newSelectText, setNewSelectText] = useState('');
 
     const handleFirstNameChanges = e => {
         setNewFirstName(e.target.value);
@@ -41,9 +40,6 @@ const CreateUser = props => {
     }
     const handleOrganizationChanges = e => {
         setNewOrganization(e.target.value);
-    }
-    const handleSelectText = e => {
-        setNewSelectText(e.target.value);
     }
 
     const newData = {
