@@ -16,6 +16,7 @@ import StudentsList from './components/StudentsList';
 import StudentsList2 from './components/StudentsList2';
 
 import StudentDetails from './components/StudentDetails';
+import AddStudent from './components/AddStudent';
 
 
 import './App.css';
@@ -30,6 +31,7 @@ function App() {
             <Link to="/main">Main</Link>
             <Link to="/students">Students</Link>
             <Link to="/students2">Students2</Link>
+            <Link to="/add-student">Add Student</Link>
           </nav>
         </header>
 
@@ -45,7 +47,7 @@ function App() {
         <PrivateRoute exact path='/add-student2' component={AddStudent2} />
         <PrivateRoute exact path='/edit-student/:id' component={EditStudent} />
         <PrivateRoute path='/main' component={MainPage} />
-        {/* <Route exact path='/AddStudent' component={AddStudent} /> */}
+        <Route exact path='/add-student' component={AddStudent} />
       </div>
     </Router>
   );

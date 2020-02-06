@@ -11,25 +11,30 @@ border: 2px; solid palevioletred;
 border-radius: 3px;
 `;
 
-const AddStudent = props =>{
-    console.log('props from Form', props);
+const AddStudent = person =>{
+    console.log(person);
+
+
+   
+    
     const [newStudent, setNewStudent] = useState ({
         first_name: '',
         last_name: '',
         age:'',
     });
+console.log("New Student", newStudent)
 
     const handleChanges = event => {
+        
         console.log(newStudent);
 
-        setNewStudent({
-            ...newStudent,
-            [event.target.first_name]:event.target.value
-        });;
+        setNewStudent
+            (event.target.value)
+        ;
     };
     const submitForm = event =>{
         event.preventDefault();
-        props.addStudent(newStudent);
+        // props.addStudent(newStudent);
         setNewStudent({first_name:'', last_name:'', age:''})
     };
     return(
@@ -55,32 +60,52 @@ const AddStudent = props =>{
                     onChange={handleChanges}
                     placeholder='Enter Age'
                     value={newStudent.age}/>
-            <styledButton type='submit'>Add Student</styledButton>
+            <label htmlFor="grade">Grade</label>
+            <input id='grade'
+                    name='grade'
+                    type='text'
+                    onChange={handleChanges}
+                    placeholder='Enter Grade'
+                    value={newStudent.grade}/>
+            <label htmlFor="address">Address</label>
+            <input id='address'
+                    name='address'
+                    type='text'
+                    onChange={handleChanges}
+                    placeholder='Enter Address'
+                    value={newStudent.address}/>
+            <label htmlFor="background">Background</label>
+            <input id='background'
+                    name='agebackground'
+                    type='text'
+                    onChange={handleChanges}
+                    placeholder='Enter Background'
+                    value={newStudent.background}/>
+            <label htmlFor="repname">Representative Name</label>
+            <input id='representative_name'
+                    name='representative_name'
+                    type='text'
+                    onChange={handleChanges}
+                    placeholder='Enter Representative Name'
+                    value={newStudent.representative_name}/>
+            <label htmlFor="representative_contact">Representative Phone Number</label>
+            <input id='representative_contact'
+                    name='representative_contact'
+                    type='text'
+                    onChange={handleChanges}
+                    placeholder='Enter Representative Phone Number'
+                    value={newStudent.representative_contact}/>
+            <label htmlFor='statusSelect'>Status</label>
+            <select id='statusSelect' name='studentStatus'>
+                <option value='1'>Active</option>
+                <option value='2'>Inactive</option>
+            </select>
+            <input type='checkbox' id='special' name='specialNeeds' />Special Needs<br />
+            <input type='checkbox' id='insurance' name='insured' />Insured<br />
+            
+            <button type='submit'>Add Student</button>
         </form>
     );
 };
 
 export default AddStudent;
-
-function App(){
-    const [newStudent, setNewStudent] =useState([])
-
-const addStudent = person => {
-const newMember ={
-    id:person.id,
-    firstname: person.first_name,
-    lastname: person.last_name,
-    age: person.age,
-};
-setNewStudent([...newStudent, newMember])
-};
-
-return (
-    <div>
-        <h1>List of Students</h1>
-        <AddStudent addStudent={addStudent}/>
-
-        
-    </div>
-);
-}

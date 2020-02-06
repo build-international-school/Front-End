@@ -6,9 +6,13 @@ import styled from "styled-components";
 
 const StudentCard = styled.div`
 height: 200px:
-width: 30%;
+width: 200px;
 padding: 10px;
 background-color: pink;
+border-style: solid;
+border-width: 3px;
+border-color: black; 
+border-radius:5px;
 
 `;
 
