@@ -5,8 +5,11 @@ import { useParams } from 'react-router-dom';
 import styled from "styled-components"
 
 const StudentCard = styled.div`
+height: 200px:
+width: 300px;
 padding: 5px;
-background-color: yellow;
+background-color: pink;
+
 `;
 
 
