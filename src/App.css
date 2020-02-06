@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .top-label {
   position: absolute;
   top: 15px;
@@ -57,11 +62,11 @@
   width: 15%;
 }
 
-.side {
+.side a {
   color: blue;
 }
 
-.side-active {
+.side-active a {
   color: orangered;
 }
 
@@ -99,4 +104,10 @@
 
 .icon img {
   width: 2%;
+}
+
+.req {
+  color: red;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
