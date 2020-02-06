@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useParams } from 'react-router-dom';
-import styled from "styled-components"
+import styled from "styled-components";
 
 const StudentCard = styled.div`
 height: 200px:
-width: 300px;
-padding: 5px;
+width: 30%;
+padding: 10px;
 background-color: pink;
 
 `;
