@@ -2,14 +2,14 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 
-const styledButton = styled.button`
-color: palevioletred;
-font-size: 1em;
-margin: 1em;
-padding: 0.25em 1em;
-border: 2px; solid palevioletred;
-border-radius: 3px;
-`;
+// const styledButton = styled.button`
+// color: palevioletred;
+// font-size: 1em;
+// margin: 1em;
+// padding: 0.25em 1em;
+// border: 2px; solid palevioletred;
+// border-radius: 3px;
+// `;
 
 const AddStudent = person =>{
     console.log(person);
@@ -20,10 +20,26 @@ const AddStudent = person =>{
     const [newStudent, setNewStudent] = useState ({
         first_name: '',
         last_name: '',
+        grade:'',
+        address:'',
+        background:'',
+        status:'',
         age:'',
+        insurance:'',
+        special_needs:'',
+        representative_name:'',
+        representative_contact:'',
+
+
     });
 console.log("New Student", newStudent)
 
+const onInputChange = event =>{
+    setNewStudent({
+        ...newStudent,
+        [event.target.name]:event.target.value,
+    });
+}
     const handleChanges = event => {
         
         console.log(newStudent);
@@ -43,56 +59,56 @@ console.log("New Student", newStudent)
             <input  id='fnameInput'
                     name='first_name'
                     type='text'
-                    onChange={handleChanges}
+                    onChange={onInputChange}
                     placeholder='Enter First Name'
                     value={newStudent.first_name}/>
             <label htmlFor="lnameInput">Last Name</label>
             <input id='lnameInput'
                     name='last_name'
                     type='text'
-                    onChange={handleChanges}
+                    onChange={onInputChange}
                     placeholder='Enter Last Name'
                     value={newStudent.last_name}/>
             <label htmlFor="age">Age</label>
             <input id='age'
                     name='age'
                     type='text'
-                    onChange={handleChanges}
+                    onChange={onInputChange}
                     placeholder='Enter Age'
                     value={newStudent.age}/>
             <label htmlFor="grade">Grade</label>
             <input id='grade'
                     name='grade'
                     type='text'
-                    onChange={handleChanges}
+                    onChange={onInputChange}
                     placeholder='Enter Grade'
                     value={newStudent.grade}/>
             <label htmlFor="address">Address</label>
             <input id='address'
                     name='address'
                     type='text'
-                    onChange={handleChanges}
+                    onChange={onInputChange}
                     placeholder='Enter Address'
                     value={newStudent.address}/>
             <label htmlFor="background">Background</label>
             <input id='background'
-                    name='agebackground'
+                    name='background'
                     type='text'
-                    onChange={handleChanges}
+                    onChange={onInputChange}
                     placeholder='Enter Background'
                     value={newStudent.background}/>
             <label htmlFor="repname">Representative Name</label>
             <input id='representative_name'
                     name='representative_name'
                     type='text'
-                    onChange={handleChanges}
+                    onChange={onInputChange}
                     placeholder='Enter Representative Name'
                     value={newStudent.representative_name}/>
             <label htmlFor="representative_contact">Representative Phone Number</label>
             <input id='representative_contact'
                     name='representative_contact'
                     type='text'
-                    onChange={handleChanges}
+                    onChange={onInputChange}
                     placeholder='Enter Representative Phone Number'
                     value={newStudent.representative_contact}/>
             <label htmlFor='statusSelect'>Status</label>
