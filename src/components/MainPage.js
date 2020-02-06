@@ -41,8 +41,10 @@ const MainPage = props => {
         props.getStudents();   
     }, [])
 
-    console.log("ORGANIZATIONS in main: ", props.organizations);
-
+    // console.log("ORGANIZATIONS in main: ", props.organizations);
+    // console.log("Workers: ", props.workers);
+    // console.log("Admins: ", props.admins);
+    console.log("Visits: ", props.visits);
 
     return(
         <div className="main-page-div">
@@ -61,10 +63,31 @@ const MainPage = props => {
                 <div className="main-info-top">
                     <div className="org-div">
                         {/*removed {user.organization} and replaced with Lambda School*/}
-                        <h2>Lamda School</h2>
+                        <h2>{user.organization}</h2>
                     </div>
                     <div className="visit-div">
                         <h3>Worker Visits:</h3>
+                        <table>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                            </tr>
+                        {props.visits && 
+                            props.visits.map(visit => (
+                                <tr>
+                                    <td>{visit.first_name}</td>
+                                    <td>{visit.last_name}</td>
+                                    <td>{visit.email}</td>
+                                    <td>{visit.date}</td>
+                                    <td>{visit.time}</td>
+                                    <td></td>
+                                </tr>
+                            ))
+                        }
+                        </table>
                         <p>No recent visits.</p>
                     </div>
                     <div className="total-div">
@@ -113,6 +136,7 @@ const mapStateToProps = state => {
         students: state.students,
         workers: state.workers,
         admins: state.admins,
+        visits: state.visits,
         organizations: state.organizations,
         isLoading: state.isLoading,
         isEditing: state.isEditing,

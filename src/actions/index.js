@@ -137,3 +137,7 @@ export const createOrgsList = (orgs) => dispatch => {
     dispatch({ type: "CREATE_ORGS_LIST", payload: orgs })
     localStorage.setItem("orgs", JSON.stringify(orgs));
 }
+
+export const addVisit = (data) => dispatch => {
+    dispatch({ type: "ADD_VISIT", payload: data });
+}
