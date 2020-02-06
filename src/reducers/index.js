@@ -123,6 +123,37 @@ export const reducer = (state= initialState, action) => {
                 isLoading: false,
                 currentStudent: action.payload
             }
+        case "ADD_STUDENT_START":
+            return {
+                ...state,
+                isLoading: true
+            }
+        case "ADDING_STUDENT_SUCCESS":
+            return {
+                ...state,
+                isLoading: false,
+                students: action.payload
+            };
+        case "EDIT_STUDENT_START":
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case "EDIT_STUDENT_SUCCESS":
+            const student = action.payload
+
+            const all = state.students.filter(student => action.payload.id !== student.id
+            )
+            console.log("in reducer, student: ", student);
+            console.log("in reducer, all: ", all)
+            return {
+                ...state,
+                isLoading: false,
+                // students: [
+                //     ...rest,
+                //     student
+                // ]
+            }   
         default:
             return state;
     }
