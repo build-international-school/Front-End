@@ -60,7 +60,8 @@ const MainPage = props => {
             <div className="main-info">
                 <div className="main-info-top">
                     <div className="org-div">
-                        <h2>{user.organization}</h2>
+                        {/*removed {user.organization} and replaced with Lambda School*/}
+                        <h2>Lamda School</h2>
                     </div>
                     <div className="visit-div">
                         <h3>Worker Visits:</h3>

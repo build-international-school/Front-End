@@ -14,6 +14,7 @@ import Student2 from './components/Student2';
 // import AddStudent from './components/AddStudent';
 import AddStudent2 from './components/AddStudent2';
 import EditStudent from './components/EditStudent';
+import Student from "./components/Student";
 
 import './App.css';
 
