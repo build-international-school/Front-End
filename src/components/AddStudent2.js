@@ -1,33 +1,49 @@
 // Add a new student
 
 import React, { useState } from 'react';
-
 import { connect } from 'react-redux';
-import SideBar from './SideBar';
+
 import { addStudent } from '../actions';
+import SideBar from './SideBar';
 
 const AddStudent2 = props => {
     const handleSignout = () => {
-        localStorage.clear();
+        localStorage.removeItem("token");
+        localStorage.removeItem("currentUser");
+        localStorage.removeItem("allStudents");
     }
 
     const user = JSON.parse(localStorage.getItem("currentUser"));
     console.log("User: ", user);
 
-    const [newFirstName, setNewFirstName] = useState(''); //string - Beth
-    const [newLastName, setNewLastName] = useState(''); //string - Smith
-    const [newAddress, setNewAddress] = useState(''); //string  123 Street, City, State 00000
-    const [newGrade, setNewGrade] = useState(''); //string - 3
-    const [newAge, setNewAge] = useState(''); //number - 10
-    const [newInsurance, setNewInsurance] = useState(3); //boolean - true(1) false(0)
-    const [newExpiration, setNewExpiration] = useState(''); //string - 01/01/2021
-    const [newStatus, setNewStatus] = useState(3); //string - radio buttons
-    const [newBirthCert, setNewBirthCert] = useState(3); //boolean - true(1) false(0)
-    const [newBackground, setNewBackground] = useState(''); //string - paragraph (textarea)
-    const [newSpecialNeeds, setNewSpecialNeeds] = useState(''); //string - none, paragraph (textarea)
-    const [newRepresentative, setNewRepresentative] = useState(''); // string - Name, relationship (Sara, mother)
-    const [newContact, setNewContact] = useState(''); //string - phone number 1111111111
-    const [newImage, setNewImage] = useState(''); //string - url - DISABLED
+    const [newFirstName, setNewFirstName] = useState(''); 
+        //string - Beth
+    const [newLastName, setNewLastName] = useState(''); 
+        //string - Smith
+    const [newAddress, setNewAddress] = useState(''); 
+        //string  123 Street, City, State 00000
+    const [newGrade, setNewGrade] = useState(''); 
+        //string - 3
+    const [newAge, setNewAge] = useState(''); 
+        //number - 10
+    const [newInsurance, setNewInsurance] = useState(3); 
+        //boolean - true(1) false(0)
+    const [newExpiration, setNewExpiration] = useState(''); 
+        //string - 01/01/2021
+    const [newStatus, setNewStatus] = useState(3); 
+        //string - radio buttons
+    const [newBirthCert, setNewBirthCert] = useState(3); 
+        //boolean - true(1) false(0)
+    const [newBackground, setNewBackground] = useState(''); 
+        //string - paragraph (textarea)
+    const [newSpecialNeeds, setNewSpecialNeeds] = useState(''); 
+        //string - none, paragraph (textarea)
+    const [newRepresentative, setNewRepresentative] = useState(''); 
+        // string - Name, relationship (Sara, mother)
+    const [newContact, setNewContact] = useState(''); 
+        //string - phone number 1111111111
+    const [newImage, setNewImage] = useState(''); 
+        //string - url - DISABLED
 
     const newData = {
         first_name: newFirstName,
@@ -89,11 +105,6 @@ const AddStudent2 = props => {
         setNewImage(e.target.value);
     }
 
-    
-    console.log("Add Student: new Data: ", newData);
-    console.log("Add Student: props: ", props);
-    console.log("Add Student: user: ", user)
-
     const handleAdd = e => {
         e.preventDefault();
         props.addStudent(newData, user.id);
@@ -106,7 +117,7 @@ const AddStudent2 = props => {
                 <p>Hello, {user.first_name} | <a href="/login" onClick={handleSignout}>Log Out</a></p>
             </div>
             <div className="placement">
-                <SideBar active={"list"} />
+                <SideBar active={"add"} />
             </div>
         
             <form onSubmit={handleAdd}>
@@ -119,8 +130,9 @@ const AddStudent2 = props => {
                                 name='first_name'
                                 onChange={handleFirstName}
                                 value={newFirstName}
+                                placeholder='First Name'
                                 required
-                            />
+                            /> <span className="req">*</span>
                         </label>
                         <label>
                             Last Name:
@@ -129,8 +141,9 @@ const AddStudent2 = props => {
                                 name='last_name'
                                 onChange={handleLastName}
                                 value={newLastName}
+                                placeholder='Last Name'
                                 required
-                            />
+                            /> <span className="req">*</span>
                         </label>
                     </div>
                     <div className='form-address-div'>
@@ -141,8 +154,9 @@ const AddStudent2 = props => {
                                 name='address'
                                 onChange={handleAddress}
                                 value={newAddress}
+                                placeholder='123 Street, City, ST, 0000'
                                 required
-                            />
+                            /> <span className="req">*</span>
                         </label>
                     </div>
                 </div>
@@ -154,8 +168,9 @@ const AddStudent2 = props => {
                             name='grade'
                             onChange={handleGrade}
                             value={newGrade}
+                            placeholder='0'
                             required
-                        />
+                        /> <span className="req">*</span>
                     </label>
                     <label>
                         Age:
@@ -164,8 +179,9 @@ const AddStudent2 = props => {
                             name='age'
                             onChange={handleAge}
                             value={newAge}
+                            placeholder={0}
                             required
-                        />
+                        /> <span className="req">*</span>
                     </label>
                 </div>
                 <div className='form-select-div'>
@@ -181,7 +197,7 @@ const AddStudent2 = props => {
                                 <option value={3} disabled>Choose...</option>
                                 <option value={1}>Yes</option>
                                 <option value={0}>No</option>
-                            </select>
+                            </select> <span className="req">*</span>
                         </label>
                         <label>
                             Expiration:
@@ -191,7 +207,6 @@ const AddStudent2 = props => {
                                 onChange={handleExpiration}
                                 value={newExpiration}
                                 placeholder={'mm/dd/yyyy'}
-                                required
                             />
                         </label>
                     </div>
@@ -208,7 +223,7 @@ const AddStudent2 = props => {
                                 <option value="active">Active</option>
                                 <option value="alumni">Alumni</option>
                                 <option value="visitor">Visitor</option>
-                            </select> 
+                            </select> <span className="req">*</span>
                         </label>
                         <label>
                             Birth Certificate:
@@ -221,7 +236,7 @@ const AddStudent2 = props => {
                                 <option value={3} disabled>Choose...</option>
                                 <option value={1}>Yes</option>
                                 <option value={0}>No</option>
-                            </select>
+                            </select> <span className="req">*</span>
                         </label>
                     </div>
                 </div>
@@ -233,8 +248,9 @@ const AddStudent2 = props => {
                             name='background'
                             onChange={handleBackground}
                             value={newBackground}
+                            placeholder="Information about home life, why they're here, what they are good at, and what they are not."
                             required
-                        />
+                        /> <span className="req">*</span>
                     </label>
                     <label>
                         Special Needs:
@@ -243,8 +259,9 @@ const AddStudent2 = props => {
                             name='special_needs'
                             onChange={handleSpecialNeeds}
                             value={newSpecialNeeds}
+                            placeholder="none | Information about IEP, or disabilities."
                             required
-                        />
+                        /> <span className="req">*</span>
                     </label>
                 </div>
                 <div className='form-rep-div'>
@@ -255,8 +272,9 @@ const AddStudent2 = props => {
                             name='representative_name'
                             onChange={handleRepresentative}
                             value={newRepresentative}
+                            placeholder="Name, relationship"
                             required
-                        />
+                        /> <span className="req">*</span>
                     </label>
                     <label>
                         Contact Information:
@@ -265,8 +283,9 @@ const AddStudent2 = props => {
                             name='representative_contact'
                             onChange={handleContact}
                             value={newContact}
+                            placeholder='111-222-3333'
                             required
-                        />
+                        /> <span className="req">*</span>
                     </label>
                 </div>
                 <button>Add!</button>

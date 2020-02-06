@@ -1,49 +1,49 @@
-// Create a new admin or worker
+// Non-Protected Route. Create a new admin or worker.
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+
 import { addUser } from '../actions';
 
 const CreateUser = props => {
+    const orgs = JSON.parse(localStorage.getItem("orgs"));
+
     const [newFirstName, setNewFirstName] = useState('');
     const [newLastName, setNewLastName] = useState('');
     const [newEmail, setNewEmail] = useState('');
     const [newPhone, setNewPhone] = useState('');
     const [newPassword, setNewPassword] = useState('');
+    const [verify, setVerify] = useState('');
     const [newType, setNewType] = useState('');
     const [newOrganization, setNewOrganization] = useState('');
-    const [verify, setVerify] = useState('');
+    const [newSelectText, setNewSelectText] = useState('');
 
     const handleFirstNameChanges = e => {
         setNewFirstName(e.target.value);
     }
-
     const handleLastNameChanges = e => {
         setNewLastName(e.target.value);
     }
-
     const handleEmailChanges = e => {
         setNewEmail(e.target.value);
     }
-
     const handlePhoneChanges = e => {
         setNewPhone(e.target.value);
     }
-
     const handlePasswordChanges = e => {
             setNewPassword(e.target.value);
     }
-
     const handleVerifyPassword = e => {
         setVerify(e.target.value);
     }
-
     const handleTypeChanges = e => {
         setNewType(e.target.value);
     }
-
     const handleOrganizationChanges = e => {
         setNewOrganization(e.target.value);
+    }
+    const handleSelectText = e => {
+        setNewSelectText(e.target.value);
     }
 
     const newData = {
@@ -68,7 +68,6 @@ const CreateUser = props => {
         
     }
 
-
     return (
         <div>
             <h1>Create a New User Account</h1>
@@ -81,7 +80,8 @@ const CreateUser = props => {
                             name='username'
                             value={newData.email}
                             onChange={handleEmailChanges}
-                        />
+                            required
+                        /> <span className="req">*</span>
                     </label>
                     <label>
                         Phone Number:
@@ -90,7 +90,8 @@ const CreateUser = props => {
                             name='phone'
                             value={newData.phone}
                             onChange={handlePhoneChanges}
-                        />
+                            required
+                        /> <span className="req">*</span>
                     </label>
                 </div>
                 <div>
@@ -101,7 +102,8 @@ const CreateUser = props => {
                             name='first_name'
                             value={newData.first_name}
                             onChange={handleFirstNameChanges}
-                        />
+                            required
+                        /> <span className="req">*</span>
                     </label>
                     <label>
                         Last Name:
@@ -110,7 +112,8 @@ const CreateUser = props => {
                             name='last_name'
                             value={newData.last_name}
                             onChange={handleLastNameChanges}
-                        />
+                            required
+                        /> <span className="req">*</span>
                     </label>
                 </div>
                 <div>
@@ -120,7 +123,8 @@ const CreateUser = props => {
                             type='password'
                             name='password'
                             onChange={handlePasswordChanges}
-                        />
+                            required
+                        />  <span className="req">*</span>
                     </label>
                     <label>
                         Password Verification:
@@ -128,7 +132,8 @@ const CreateUser = props => {
                             type='password'
                             name='password'
                             onChange={handleVerifyPassword}
-                        />
+                            required
+                        /> <span className="req">*</span>
                     </label>
                 </div>
                 <div>
@@ -139,6 +144,7 @@ const CreateUser = props => {
                             name='type'
                             value='admin'
                             onChange={handleTypeChanges}
+                            checked
                         /> Admin
                         <input
                             type='radio'
@@ -146,17 +152,24 @@ const CreateUser = props => {
                             value='worker'
                             onChange={handleTypeChanges}
                         /> Social Worker
-                    </label>
+                    </label> <span className="req">*</span>
                 </div>
                 <div>
                     <label>
                         Organization:
-                        <input
-                            type='text'
-                            name='organization'
-                            value={newData.organization}
+                        <input 
+                            type="text" 
+                            list="orgs" 
                             onChange={handleOrganizationChanges}
-                        />
+                            value={newOrganization}
+                            required
+                        /> <span className="req">*</span>
+                        <datalist id='orgs'>
+                            {orgs.map(item => (
+                                <option>{item}</option>
+                            ))}
+                            <option> ABCDE </option>
+                        </datalist>
                     </label>
                 </div>
                 <button>Create User!</button>
@@ -170,7 +183,8 @@ const mapStateToProps = state => {
     return {
         users: state.users,
         isLoading: state.isLoading,
-        error: state.error
+        error: state.error,
+        organizations: state.organizations
     }
 
 }

@@ -37,7 +37,7 @@ const initialState = {
         representative_name: '',
         representative_contact: ''
     },
-    users: [
+    workers: [
         {
             id: null,
             password: '', // 8 char min - required
@@ -49,6 +49,19 @@ const initialState = {
             organization: ''
         }
     ],
+    admins: [
+        {
+            id: null,
+            password: '', // 8 char min - required
+            email: '', // must include @ and . - required
+            phone: '',
+            first_name: '', // required
+            last_name: '', // required,
+            type: '', // admin or worker - required
+            organization: ''
+        }
+    ],
+    organizations: [],
     currentUser: {
         id: null,
             password: '', // 8 char min - required
@@ -81,6 +94,33 @@ export const reducer = (state= initialState, action) => {
             return {
                 error: action.payload
             };
+        case "GET_WORKERS_START":
+            return {
+                ...state,
+                isLoading: true
+            }
+        case "GET_WORKERS_SUCCESS":
+            return {
+                ...state,
+                isLoading: false,
+                workers: action.payload
+            }
+        case "CREATE_ORGS_LIST":
+            return {
+                ...state,
+                organizations: action.payload
+            }
+        case "GET_ADMINS_START":
+            return {
+                ...state,
+                isLoading: true
+            }
+        case "GET_ADMINS_SUCCESS":
+            return {
+                ...state,
+                isLoading: false,
+                admins: action.payload
+            }
         case "LOGIN_USER_START":
             return {
                 ...state,
