@@ -156,7 +156,7 @@ export const reducer = (state= initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
-        case "ADD_STUDENT_START":
+        case "ADDING_STUDENT_START":
             return {
                 ...state,
                 isLoading: true
