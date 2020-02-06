@@ -132,6 +132,7 @@ const CreateUser = props => {
                             type='password'
                             name='password'
                             onChange={handleVerifyPassword}
+                            value={verify}
                             required
                         /> <span className="req">*</span>
                     </label>
@@ -139,20 +140,17 @@ const CreateUser = props => {
                 <div>
                     <label>
                         User Type:
-                        <input
-                            type='radio'
+                        <select
                             name='type'
-                            value='admin'
                             onChange={handleTypeChanges}
-                            checked
-                        /> Admin
-                        <input
-                            type='radio'
-                            name='type'
-                            value='worker'
-                            onChange={handleTypeChanges}
-                        /> Social Worker
-                    </label> <span className="req">*</span>
+                            value={newType}
+                            required
+                        >
+                            <option value={3} disabled>Choose...</option>
+                            <option value="admin">Admin</option>
+                            <option value="worker">Worker</option>
+                        </select> <span className="req">*</span>
+                    </label>
                 </div>
                 <div>
                     <label>
@@ -165,10 +163,10 @@ const CreateUser = props => {
                             required
                         /> <span className="req">*</span>
                         <datalist id='orgs'>
-                            {orgs.map(item => (
+                            {orgs && orgs.map(item => (
                                 <option>{item}</option>
                             ))}
-                            <option> ABCDE </option>
+                            <option> - </option>
                         </datalist>
                     </label>
                 </div>
