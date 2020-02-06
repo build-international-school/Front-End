@@ -21,7 +21,7 @@ const Student =  props => {
     <StudentCard>
         <h2>{props.student.first_name}</h2>
         <h2>{props.student.last_name}</h2>
-        <p></p>
+        
     </StudentCard>
 
 
@@ -32,24 +32,6 @@ const Student =  props => {
 
 
 
-
-        
-        // <div>
-        //     {props.student.map(student =>(
-        //         <div key={student.id}>
-        //         <h2>{student.first_name}</h2>
-        //         </div>
-        //     ))}
-        //         <h1>{props.data.first_name}</h1>
-        //         <h1>{props.data.last_name}</h1>
-
-        //         {/* <h2>{first_name}</h2>
-        //         <h2>{last_name}</h2>
-        //         <p>grade: {grade}</p>
-        //         <p>age: {age}</p>
-        //         <p>status:{status}</p> */}
-            
-        // </div>
         
     )
     
