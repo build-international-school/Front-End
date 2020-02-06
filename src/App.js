@@ -15,6 +15,9 @@ import Student from "./components/Student";
 import StudentsList from './components/StudentsList';
 import StudentsList2 from './components/StudentsList2';
 
+import StudentDetails from './components/StudentDetails';
+
+
 import './App.css';
 
 function App() {
@@ -36,7 +39,9 @@ function App() {
         <PrivateRoute exact path='/students' component={StudentsList} />
         <PrivateRoute exact path='/students2' component={StudentsList2} />
         <PrivateRoute exact path='/student2/:id' component={Student2} />
-        {/* <Route exact path='/students/:id' component={Student} /> */}
+        <Route exact path='/student/:id'>
+         <StudentDetails/> 
+        </Route> 
         <PrivateRoute exact path='/add-student2' component={AddStudent2} />
         <PrivateRoute exact path='/edit-student/:id' component={EditStudent} />
         <PrivateRoute path='/main' component={MainPage} />
