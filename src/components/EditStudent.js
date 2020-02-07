@@ -7,7 +7,7 @@ import Nav from './Nav';
 import { editStudent } from '../actions';
 import SideBar from './SideBar';
 
-import { MainEditDiv, EditDiv, VisitForm, Label, Select, EditInput, EditTextarea, Button } from './Styles.js';
+import { MainEditDiv, EditDiv, VisitForm, Label, Select, EditInput, EditTextarea, Button, Err } from './Styles.js';
 
 const EditStudent = props => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -120,6 +120,7 @@ const EditStudent = props => {
     return (
         <>
         <Nav />
+        {props.error && <Err><h5>Uh Oh! Something didn't work! Error: {props.error} </h5></Err>}
         <MainEditDiv className="add-edit-form">
             <div className="placement">
                 <SideBar active={"edit"} />

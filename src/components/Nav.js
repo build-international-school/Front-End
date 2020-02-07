@@ -14,7 +14,6 @@ const Nav = () => {
     }
 
     const user = JSON.parse(localStorage.getItem("currentUser"));
-    console.log("User: ", user);
 
     return (
        <Navigation>         

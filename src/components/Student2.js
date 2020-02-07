@@ -11,11 +11,10 @@ import profileShadow from '../images/profileShadow.png';
 import edit from '../images/edit.svg';
 import del from '../images/delete.svg';
 
-import { MainStudentDiv, StudentDiv } from './Styles.js';
+import { MainStudentDiv, StudentDiv, Err } from './Styles.js';
 
 const Student2 =  props => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
-    console.log("User: ", user);
 
     const student = JSON.parse(localStorage.getItem("currentStudent"));
 
@@ -46,6 +45,7 @@ const Student2 =  props => {
     return (
         <>
         <Nav />
+        {props.error && <Err><h5>Uh Oh! Something didn't work! Error: {props.error} </h5></Err>}
         <MainStudentDiv>
             <div className="placement">
                 <SideBar active={"student"} />

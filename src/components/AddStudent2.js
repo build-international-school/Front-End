@@ -8,11 +8,10 @@ import SideBar from './SideBar';
 
 import Nav from './Nav';
 
-import { MainEditDiv, EditDiv, VisitForm, Label, Select, EditInput, EditTextarea, Button } from './Styles.js';
+import { MainEditDiv, EditDiv, VisitForm, Label, Select, EditInput, EditTextarea, Button, Err } from './Styles.js';
 
 const AddStudent2 = props => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
-    console.log("User: ", user);
 
     const [newFirstName, setNewFirstName] = useState(''); 
         //string - Beth
@@ -112,6 +111,7 @@ const AddStudent2 = props => {
     return(
         <>
         <Nav />
+        {props.error && <Err><h5>Uh Oh! Something didn't work! Error: {props.error} </h5></Err>}
         <MainEditDiv>
             <div className="placement">
                 <SideBar active={"add"} />

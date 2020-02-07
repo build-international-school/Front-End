@@ -83,7 +83,7 @@ const initialState = {
     },
     isLoading: false,
     isEditing: false,
-    error: '',
+    error: null,
 };
 
 export const reducer = (state= initialState, action) => {
@@ -91,7 +91,7 @@ export const reducer = (state= initialState, action) => {
         case "ADDING_USER_START":
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
             };
         case "ADDING_USER_SUCCESS":
             return {
@@ -108,7 +108,7 @@ export const reducer = (state= initialState, action) => {
         case "LOGIN_USER_START":
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
             };
         case "LOGIN_USER_SUCCESS":
             return {
@@ -142,7 +142,7 @@ export const reducer = (state= initialState, action) => {
         case "GET_ONE_STUDENT_START":
             return {
                 ...state,
-                isLoading: true 
+                isLoading: true,
             }
         case "GET_ONE_STUDENT_SUCCESS":
             return {
@@ -159,13 +159,16 @@ export const reducer = (state= initialState, action) => {
         case "ADDING_STUDENT_START":
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
             }
         case "ADDING_STUDENT_SUCCESS":
             return {
                 ...state,
                 isLoading: false,
-                students: action.payload
+                students: [
+                    ...state.students,
+                    action.payload
+                ]
             };
         case "ADDING_STUDENT_ERROR":
             return {
@@ -189,10 +192,26 @@ export const reducer = (state= initialState, action) => {
                 isLoading: false,
                 error: action.payload
             };
+        case "DELETE_STUDENT_START":
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case "DELETE_STUDENT_SUCCESS":
+            return {
+                ...state,
+                isLoading: false
+            }
+        case "DELETE_STUDENT_ERROR":
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
         case "GET_WORKERS_START":
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
             };
         case "GET_WORKERS_SUCCESS":
             return {
@@ -200,6 +219,12 @@ export const reducer = (state= initialState, action) => {
                 isLoading: false,
                 workers: action.payload
             };
+        case "GET_WORKERS_ERROR":
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
         case "CREATE_ORGS_LIST":
             return {
                 ...state,
@@ -208,7 +233,7 @@ export const reducer = (state= initialState, action) => {
         case "GET_ADMINS_START":
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
             };
         case "GET_ADMINS_SUCCESS":
             return {
@@ -216,6 +241,12 @@ export const reducer = (state= initialState, action) => {
                 isLoading: false,
                 admins: action.payload
             };
+        case "GET_ADMINS_ERROR":
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
         case "ADD_VISIT":
             return {
                 ...state,
@@ -224,12 +255,11 @@ export const reducer = (state= initialState, action) => {
                     action.payload
                 ]
             }
-        case "UPDATE_PIC_START":
-            return {
-                ...state,
-                //update the students...
-            }
-
+        // case "UPDATE_PIC_START":
+        //     return {
+        //         ...state,
+        //         //update the students...
+        //     }
         default:
             return state;
     }

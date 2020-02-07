@@ -10,7 +10,6 @@ export const addUser = (props, data) => dispatch => {
     axios
         .post('https://issw.herokuapp.com/api/auth/register', data)
         .then(res => {
-            console.log("CreateUser register: ", res);
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("currentUser", JSON.stringify(res.data));
             dispatch({ type: "ADDING_USER_SUCCESS", payload: res.data })
@@ -27,11 +26,11 @@ export const getWorkers = () => dispatch => {
     axiosWithAuth()
         .get('https://issw.herokuapp.com/api/workers')
         .then(res => {
-            console.log('Get Workers: ', res)
             dispatch({ type: "GET_WORKERS_SUCCESS", payload: res.data })
         })
         .catch(err => {
             console.log(err);
+            dispatch({ type: "GET_WORKERS_ERROR", payload: err.message })
         })
 }
 
@@ -40,17 +39,16 @@ export const getAdmins = () => dispatch => {
     axiosWithAuth()
         .get('https://issw.herokuapp.com/api/admins')
         .then(res => {
-            console.log('Get Admins: ', res)
             dispatch({ type: "GET_ADMINS_SUCCESS", payload: res.data })
         })
         .catch(err => {
             console.log(err);
+            dispatch({ type: "GET_ADMINS_ERROR", payload: err.message })
         })
 }
 
 export const loginUser = (props, data) => dispatch => {
     dispatch( { type: "LOGIN_USER_START" });
-    console.log("Login User Data: ", data);
     axios
         .post('https://issw.herokuapp.com/api/auth/login', data)
         .then(res => {
@@ -70,12 +68,12 @@ export const getStudents = () => dispatch => {
     axiosWithAuth()
         .get('https://issw.herokuapp.com/api/students')
         .then(res => {
-            console.log("GetStudents: ", res);
             localStorage.setItem("allStudents", JSON.stringify(res.data));
             dispatch({ type: "GET_STUDENTS_SUCCESS", payload: res.data })
         })
         .catch(err => {
             console.log(err);
+            dispatch({ type: "GET_STUDENTS_ERROR", payload: err.message })
         })
 }
 
@@ -84,39 +82,38 @@ export const getOneStudent = (id) => dispatch => {
     return axiosWithAuth()
         .get(`https://issw.herokuapp.com/api/students/${id}`)
         .then(res => {
-            console.log("GetOneStudent: ", res.data);
             localStorage.setItem("currentStudent", JSON.stringify(res.data));
             dispatch({ type: "GET_ONE_STUDENT_SUCCESS", payload: res.data })
         })
         .catch(err => {
             console.log(err);
+            dispatch({ type: "GET_ONE_STUDENT_SUCCESS", payload: err.message })
         })
 }
 
 export const addStudent = (data, id) => dispatch => {
-    dispatch({ type: "ADD_STUDENT_START" });
+    dispatch({ type: "ADDING_STUDENT_START" });
     return axiosWithAuth()
         .post(`https://issw.herokuapp.com/api/admins/${id}/students`, data)
         .then(res => {
-            console.log("AddStudent res: ", res.data)
-            // dispatch({ type: "ADD_STUDENT_SUCCESS", payload: res.data})
+            dispatch({ type: "ADDING_STUDENT_SUCCESS", payload: res.data})
         })
         .catch(err => {
             console.log(err);
+            dispatch({ type: "ADDING_STUDENT_ERROR", payload: err.message })
         })
 }
 
 export const editStudent = (data, id) => dispatch => {
     dispatch({ type: "EDIT_STUDENT_START" });
     return axiosWithAuth()
-    // .put(`https://issw.herokuapp.com/api/admins/${id}/students`, data)
     .put(`https://issw.herokuapp.com/api/students/${id}`, data)
     .then(res => {
-        console.log("EditStudent res: ", res);
-        dispatch({ type:"EDIT_STUDENT_SUCCESS", payload: data})
+        dispatch({ type: "EDIT_STUDENT_SUCCESS", payload: data})
     })
     .catch(err => {
         console.log(err);
+        dispatch({ type: "EDIT_STUDENT_ERROR", payload: err.message})
     })
 }
 
@@ -126,9 +123,11 @@ export const deleteStudent = (id) => dispatch => {
     .delete(`https://issw.herokuapp.com/api/students/${id}`)
     .then(res => {
         console.log("Delete Student res: ", res);
+        dispatch({ type: "DELETE_STUDENT_SUCCESS", payload: id })
     })
     .catch(err => {
         console.log(err);
+        dispatch({ type: "DELETE_STUDENT_ERROR", payload: err.message })
     })
 }
 
@@ -142,6 +141,7 @@ export const updateStudentPic = (id, data) => dispatch => {
         })
         .catch(err => {
             console.log(err);
+            dispatch({ type: "UPDATE_PIC_ERROR", payload: err.message })
         })
 }
 
