@@ -4,6 +4,8 @@ import React, { useState} from 'react';
 import { connect } from 'react-redux';
 
 import { loginUser } from '../actions';
+import NavInit from './NavInit';
+
 
 const Login = props => {
     const [loginEmail, setLoginEmail] = useState('');
@@ -28,6 +30,7 @@ const Login = props => {
 
     return(
         <div>
+            <NavInit />
             <h1>Login Existing User</h1>
             <form onSubmit={handleLogin}>
                 <div>

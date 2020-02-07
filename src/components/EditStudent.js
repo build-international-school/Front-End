@@ -3,17 +3,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
+import Nav from './Nav';
 import { editStudent } from '../actions';
 import SideBar from './SideBar';
 
+import { MainEditDiv, EditDiv, VisitForm, Label, Select, EditInput, EditTextarea, Button } from './Styles.js';
 
 const EditStudent = props => {
-    const handleSignout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("currentUser");
-        localStorage.removeItem("allStudents");
-    }
-    
     const user = JSON.parse(localStorage.getItem("currentUser"));
 
     const student = JSON.parse(localStorage.getItem("currentStudent"));
@@ -122,186 +118,169 @@ const EditStudent = props => {
 
 
     return (
-        <div className="add-edit-form">
-            <div className="top-label">
-                <p>Hello, {user.first_name} | <a href="/login" onClick={handleSignout}>Log Out</a></p>
-            </div>
+        <>
+        <Nav />
+        <MainEditDiv className="add-edit-form">
             <div className="placement">
                 <SideBar active={"edit"} />
             </div>
-
-            <form onSubmit={handleSubmit}>
-                <div className="form-maininfo-div">
-                    <div className='form-name-div'>
-                        <label>
-                            First Name:
-                            <input
+            <EditDiv>
+                <VisitForm onSubmit={handleSubmit}>
+                            <Label>
+                                First Name:
+                                <EditInput
+                                    type='text'
+                                    name='first_name'
+                                    onChange={handleFirstName}
+                                    value={editFirstName}
+                                    placeholder='First Name'
+                                    required
+                                /> <span className="req">*</span>
+                            </Label>
+                            <Label>
+                                Last Name:
+                                <EditInput
+                                    type='text'
+                                    name='last_name'
+                                    onChange={handleLastName}
+                                    value={editLastName}
+                                    placeholder='Last Name'
+                                    required
+                                /><span className="req">*</span>
+                            </Label>
+                            <Label>
+                                Address:
+                                <EditTextarea
+                                    wrap='soft'
+                                    name='address'
+                                    onChange={handleAddress}
+                                    value={editAddress}
+                                    placeholder='123 Street, City, ST, 0000'
+                                    required
+                                /> <span className="req">*</span>
+                            </Label>
+                        <Label>
+                            Grade:
+                            <EditInput
                                 type='text'
-                                name='first_name'
-                                onChange={handleFirstName}
-                                value={editFirstName}
-                                placeholder='First Name'
+                                name='grade'
+                                onChange={handleGrade}
+                                value={editGrade}
+                                placeholder='0'
                                 required
                             /> <span className="req">*</span>
-                        </label>
-                        <label>
-                            Last Name:
-                            <input
-                                type='text'
-                                name='last_name'
-                                onChange={handleLastName}
-                                value={editLastName}
-                                placeholder='Last Name'
+                        </Label>
+                        <Label>
+                            Age:
+                            <EditInput
+                                type='number'
+                                name='age'
+                                onChange={handleAge}
+                                value={editAge}
+                                placeholder={0}
                                 required
-                            /><span className="req">*</span>
-                        </label>
-                    </div>
-                    <div className='form-address-div'>
-                        <label>
-                            Address:
-                            <input
+                            /> <span className="req">*</span>
+                        </Label>
+                            <Label>
+                                Insurance: 
+                                <Select
+                                    name='insurance'
+                                    onChange={handleInsurance}
+                                    value={editInsurance}
+                                    required
+                                >
+                                    <option value={3} disabled>Choose...</option>
+                                    <option value={1}>Yes</option>
+                                    <option value={0}>No</option>
+                                </Select> <span className="req">*</span>
+                            </Label>
+                            <Label>
+                                Expiration:
+                                <EditInput
+                                    type='text'
+                                    name='exp_date'
+                                    onChange={handleExpiration}
+                                    value={editExpiration}
+                                    placeholder={'mm/dd/yyyy'}
+                                />
+                            </Label>
+                            <Label>
+                                Status: 
+                                <Select
+                                    name='status'
+                                    onChange={handleStatus}
+                                    value={editStatus}
+                                    required
+                                >
+                                    <option value={3} disabled>Choose...</option>
+                                    <option value="active">Active</option>
+                                    <option value="alumni">Alumni</option>
+                                    <option value="visitor">Visitor</option>
+                                </Select> <span className="req">*</span>
+                            </Label>
+                            <Label>
+                                Birth Certificate:
+                                <Select
+                                    name='birth_certificate'
+                                    onChange={handleBirthCert}
+                                    value={editBirthCert}
+                                    required
+                                >
+                                    <option value={3} disabled>Choose...</option>
+                                    <option value={1}>Yes</option>
+                                    <option value={0}>No</option>
+                                </Select> <span className="req">*</span>
+                            </Label>
+                        <Label>
+                            Background:
+                            <EditTextarea
+                                wrap='soft'
+                                name='background'
+                                onChange={handleBackground}
+                                value={editBackground}
+                                placeholder="Information about home life, why they're here, what they are good at, and what they are not."
+                                required
+                            /> <span className="req">*</span>
+                        </Label>
+                        <Label>
+                            Special Needs:
+                            <EditTextarea
+                                wrap='soft'
+                                name='special_needs'
+                                onChange={handleSpecialNeeds}
+                                value={editSpecialNeeds}
+                                placeholder="none | Information about IEP, or disabilities."
+                                required
+                            /> <span className="req">*</span>
+                        </Label>
+                        <Label>
+                            Representative:
+                            <EditInput
                                 type='textarea'
-                                name='address'
-                                onChange={handleAddress}
-                                value={editAddress}
-                                placeholder='123 Street, City, ST, 0000'
+                                name='representative_name'
+                                onChange={handleRepresentative}
+                                value={editRepresentative}
+                                placeholder="Name, relationship"
                                 required
                             /> <span className="req">*</span>
-                        </label>
-                    </div>
-                </div>
-                <div className='form-number-div'>
-                    <label>
-                        Grade:
-                        <input
-                            type='text'
-                            name='grade'
-                            onChange={handleGrade}
-                            value={editGrade}
-                            placeholder='0'
-                            required
-                        /> <span className="req">*</span>
-                    </label>
-                    <label>
-                        Age:
-                        <input
-                            type='number'
-                            name='age'
-                            onChange={handleAge}
-                            value={editAge}
-                            placeholder={0}
-                            required
-                        /> <span className="req">*</span>
-                    </label>
-                </div>
-                <div className='form-select-div'>
-                    <div className='form-insurance-div'>
-                        <label>
-                            Insurance: 
-                            <select
-                                name='insurance'
-                                onChange={handleInsurance}
-                                value={editInsurance}
+                        </Label>
+                        <Label>
+                            Contact Information:
+                            <EditInput
+                                type='textarea'
+                                name='representative_contact'
+                                onChange={handleContact}
+                                value={editContact}
+                                placeholder='111-222-3333'
                                 required
-                            >
-                                <option value={3} disabled>Choose...</option>
-                                <option value={1}>Yes</option>
-                                <option value={0}>No</option>
-                            </select> <span className="req">*</span>
-                        </label>
-                        <label>
-                            Expiration:
-                            <input
-                                type='text'
-                                name='exp_date'
-                                onChange={handleExpiration}
-                                value={editExpiration}
-                                placeholder={'mm/dd/yyyy'}
-                            />
-                        </label>
-                    </div>
-                    <div className='form-status-div'>
-                        <label>
-                            Status: 
-                            <select
-                                name='status'
-                                onChange={handleStatus}
-                                value={editStatus}
-                                required
-                            >
-                                <option value={3} disabled>Choose...</option>
-                                <option value="active">Active</option>
-                                <option value="alumni">Alumni</option>
-                                <option value="visitor">Visitor</option>
-                            </select> <span className="req">*</span>
-                        </label>
-                        <label>
-                            Birth Certificate:
-                            <select
-                                name='birth_certificate'
-                                onChange={handleBirthCert}
-                                value={editBirthCert}
-                                required
-                            >
-                                <option value={3} disabled>Choose...</option>
-                                <option value={1}>Yes</option>
-                                <option value={0}>No</option>
-                            </select> <span className="req">*</span>
-                        </label>
-                    </div>
-                </div>
-                <div className='form-textarea-div'>
-                    <label>
-                        Background:
-                        <input
-                            type='textarea'
-                            name='background'
-                            onChange={handleBackground}
-                            value={editBackground}
-                            placeholder="Information about home life, why they're here, what they are good at, and what they are not."
-                            required
-                        /> <span className="req">*</span>
-                    </label>
-                    <label>
-                        Special Needs:
-                        <input
-                            type='textarea'
-                            name='special_needs'
-                            onChange={handleSpecialNeeds}
-                            value={editSpecialNeeds}
-                            placeholder="none | Information about IEP, or disabilities."
-                            required
-                        /> <span className="req">*</span>
-                    </label>
-                </div>
-                <div className='form-rep-div'>
-                    <label>
-                        Representative:
-                        <input
-                            type='textarea'
-                            name='representative_name'
-                            onChange={handleRepresentative}
-                            value={editRepresentative}
-                            placeholder="Name, relationship"
-                            required
-                        /> <span className="req">*</span>
-                    </label>
-                    <label>
-                        Contact Information:
-                        <input
-                            type='textarea'
-                            name='representative_contact'
-                            onChange={handleContact}
-                            value={editContact}
-                            placeholder='111-222-3333'
-                            required
-                        /> <span className="req">*</span>
-                    </label>
-                </div>
-                <button>Edit Student</button>
-                <button onClick={handleCancel}>Cancel</button>
-            </form>
-        </div>
+                            /> <span className="req">*</span>
+                        </Label>
+                    <Button>Edit Student</Button>
+                    <Button onClick={handleCancel}>Cancel</Button>
+                </VisitForm>
+            </EditDiv>
+        </MainEditDiv>
+        </>
     )
 }
 

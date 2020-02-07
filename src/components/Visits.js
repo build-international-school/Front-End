@@ -3,16 +3,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
+import Nav from './Nav';
 import { addVisit } from '../actions';
 import SideBar from './SideBar';
 
-const Visits = props => {
-    const handleSignout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("currentUser");
-        localStorage.removeItem("allStudents");
-    }
+import { MainVisitDiv, VisitDiv, VisitForm, Label, Select, Input, Button } from './Styles.js';
 
+const Visits = props => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
     console.log("User: ", user);
 
@@ -58,92 +55,88 @@ const Visits = props => {
     }
 
     return (
-        <div>
-            <div className="top-label">
-                {user && 
-                    <p>Hello, {user.first_name} | <a href="/login" onClick={handleSignout}>Log Out</a></p>
-                }
-                {!user && 
-                    <p>Hello! | <a href="/login" onClick={handleSignout}>Log Out</a></p>
-                }
-            </div>
+        <>
+        <Nav />
+        <MainVisitDiv>
             <div className="placement">
                 <SideBar active={"visits"} />
             </div>
-            Worker Visits Page
-            <form onSubmit={handleAdd}>
-                <label>
-                    Login Type:
-                    <select
-                        name='type'
-                        onChange={handleType}
-                        value={type}
-                        disabled
-                    >
-                        <option value={3} disabled>Choose...</option>
-                        <option value='admin'>Admin</option>
-                        <option value='worker'>Worker</option>
-                    </select>
-                </label>
-
-                <label>
-                    First Name:
-                    <input
-                        type='text'
-                        name='first_name'
-                        onChange={handleFirstName}
-                        value={workerFirstName}
-                        placeholder='First Name'
-                        disabled
-                    /> <span className="req">*</span>
-                </label>
-                <label>
-                    Last Name:
-                    <input
-                        type='text'
-                        name='last_name'
-                        onChange={handleLastName}
-                        value={workerLastName}
-                        placeholder='Last Name'
-                        disabled
-                    /> <span className="req">*</span>
-                </label>
-                <label>
-                    Email:
-                    <input
-                        type='email'
-                        name='email'
-                        onChange={handleEmail}
-                        value={workerEmail}
-                        placeholder='email@email.com'
-                        disabled
-                    /> <span className="req">*</span>
-                </label>
-                <label>
-                    Date:
-                    <input
-                        type='text'
-                        name='date'
-                        onChange={handleDate}
-                        value={visitDate}
-                        placeholder='mm/dd/yyyy'
-                        required
-                    /> <span className="req">*</span>
-                </label>
-                <label>
-                    Time:
-                    <input
-                        type='text'
-                        name='time'
-                        onChange={handleTime}
-                        value={visitTime}
-                        placeholder='10:15 am'
-                        required
-                    /> <span className="req">*</span>
-                </label>
-                <button>Add Visit</button>
-            </form>
-        </div>
+            <VisitDiv>
+                <h1>Add A Visit</h1>
+                <VisitForm onSubmit={handleAdd}>
+                    <Label>
+                        Login Type:
+                        <Select
+                            name='type'
+                            onChange={handleType}
+                            value={type}
+                            disabled
+                        >
+                            <option value={3} disabled>Choose...</option>
+                            <option value='admin'>Admin</option>
+                            <option value='worker'>Worker</option>
+                        </Select>
+                    </Label>
+                    <Label>
+                        First Name:
+                        <Input
+                            type='text'
+                            name='first_name'
+                            onChange={handleFirstName}
+                            value={workerFirstName}
+                            placeholder='First Name'
+                            disabled
+                        /> <span className="req">*</span>
+                    </Label>
+                    <Label>
+                        Last Name:
+                        <Input
+                            type='text'
+                            name='last_name'
+                            onChange={handleLastName}
+                            value={workerLastName}
+                            placeholder='Last Name'
+                            disabled
+                        /> <span className="req">*</span>
+                    </Label>
+                    <Label>
+                        Email:
+                        <Input
+                            type='email'
+                            name='email'
+                            onChange={handleEmail}
+                            value={workerEmail}
+                            placeholder='email@email.com'
+                            disabled
+                        /> <span className="req">*</span>
+                    </Label>
+                    <Label>
+                        Date:
+                        <Input
+                            type='text'
+                            name='date'
+                            onChange={handleDate}
+                            value={visitDate}
+                            placeholder='mm/dd/yyyy'
+                            required
+                        /> <span className="req">*</span>
+                    </Label>
+                    <Label>
+                        Time:
+                        <Input
+                            type='text'
+                            name='time'
+                            onChange={handleTime}
+                            value={visitTime}
+                            placeholder='10:15 am'
+                            required
+                        /> <span className="req">*</span>
+                    </Label>
+                    <Button>Add Visit</Button>
+                </VisitForm>
+            </VisitDiv>
+        </MainVisitDiv>
+        </>
     )
 }
 

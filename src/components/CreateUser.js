@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { addUser } from '../actions';
+import NavInit from './NavInit';
+
 
 const CreateUser = props => {
     const orgs = JSON.parse(localStorage.getItem("orgs"));
@@ -66,6 +68,7 @@ const CreateUser = props => {
 
     return (
         <div>
+            <NavInit />
             <h1>Create a New User Account</h1>
             <form onSubmit={handleAddUser}>
                 <div>

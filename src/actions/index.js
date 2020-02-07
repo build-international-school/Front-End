@@ -3,7 +3,6 @@
 
 import axios from 'axios';
 
-import { connect } from 'react-redux';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export const addUser = (props, data) => dispatch => {
@@ -131,6 +130,19 @@ export const deleteStudent = (id) => dispatch => {
     .catch(err => {
         console.log(err);
     })
+}
+
+export const updateStudentPic = (id, data) => dispatch => {
+    dispatch({ type: "UPDATE_PIC_START" });
+    return axiosWithAuth()
+        .put(`https://issw.herokuapp.com/api/students/${id}/image`, data)
+        .then(res => {
+            console.log("Update Pic res: ", res);
+            // dispatch({ type: "UPDATE_PIC_SUCCESS", payload: {id: id, data: thing}})
+        })
+        .catch(err => {
+            console.log(err);
+        })
 }
 
 export const createOrgsList = (orgs) => dispatch => {
