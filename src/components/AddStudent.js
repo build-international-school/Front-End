@@ -45,7 +45,7 @@ const onInputChange = event =>{
     const submitForm = event =>{
         event.preventDefault();
         // props.addStudent(newStudent);
-        setNewStudent({first_name:'', last_name:'', grade:'',address:'',age:''})
+        setNewStudent({first_name:'', last_name:'', grade:'',address:'',age:'',background:'',status:'',insurance:'',special_needs:'',representative_name:'',representative_contact:''})
     };
     return(
         <form onSubmit={submitForm}>
@@ -84,27 +84,27 @@ const onInputChange = event =>{
                     onChange={onInputChange}
                     placeholder='Enter Address'
                     value={newStudent.address}/>
-            {/* <label htmlFor="background">Background</label>
+            <label htmlFor="background">Background</label>
             <input id='background'
                     name='background'
                     type='text'
                     onChange={onInputChange}
                     placeholder='Enter Background'
-                    value={newStudent.background}/> */}
-            {/* <label htmlFor="repname">Representative Name</label>
+                    value={newStudent.background}/>
+            <label htmlFor="repname">Representative Name</label>
             <input id='representative_name'
                     name='representative_name'
                     type='text'
                     onChange={onInputChange}
                     placeholder='Enter Representative Name'
-                    value={newStudent.representative_name}/> */}
-            {/* <label htmlFor="representative_contact">Representative Phone Number</label>
+                    value={newStudent.representative_name}/>
+            <label htmlFor="representative_contact">Representative Phone Number</label>
             <input id='representative_contact'
                     name='representative_contact'
                     type='text'
                     onChange={onInputChange}
                     placeholder='Enter Representative Phone Number'
-                    value={newStudent.representative_contact}/> */}
+                    value={newStudent.representative_contact}/>
             <label htmlFor='statusSelect'>Status</label>
             <select id='statusSelect' name='studentStatus'>
                 <option value='1'>Active</option>
