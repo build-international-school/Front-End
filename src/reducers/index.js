@@ -136,7 +136,7 @@ export const reducer = (state= initialState, action) => {
         case "GET_STUDENTS_ERROR":
             return {
                 ...state,
-                isLoadin: false,
+                isLoading: false,
                 error: action.payload
             }
         case "GET_ONE_STUDENT_START":
@@ -224,161 +224,13 @@ export const reducer = (state= initialState, action) => {
                     action.payload
                 ]
             }
-        default:
-            return state;
-    }
-}
+        case "UPDATE_PIC_START":
+            return {
+                ...state,
+                //update the students...
+            }
 
-/*
-export const userReducer = (state= initialState, action) => {
-    switch (action.type) {
-        case "ADDING_USER_START":
-            return {
-                ...state,
-                isLoading: true
-            };
-        case "ADDING_USER_SUCCESS":
-            return {
-                ...state,
-                isLoading: false,
-                currentUser: action.payload
-            };
-        case "ADDING_USER_ERROR":
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload
-            };
-        case "LOGIN_USER_START":
-            return {
-                ...state,
-                isLoading: true
-            };
-        case "LOGIN_USER_SUCCESS":
-            return {
-                ...state,
-                isLoading: false,
-                currentUser: action.payload
-            };
-        case "LOGIN_USER_ERROR":
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload
-            };
-        
         default:
             return state;
     }
 }
-*/
-/*
-export const studentReducer = (state= initialState, action) => {
-    switch (action.type) {
-        case "GET_STUDENTS_START":
-            return {
-                ...state,
-                isLoading: true,
-            }
-        case "GET_STUDENTS_SUCCESS":
-            return {
-                ...state,
-                isLoading: false,
-                students: action.payload
-            }
-        case "GET_STUDENTS_ERROR":
-            return {
-                ...state,
-                isLoadin: false,
-                error: action.payload
-            }
-        case "GET_ONE_STUDENT_START":
-            return {
-                ...state,
-                isLoading: true 
-            }
-        case "GET_ONE_STUDENT_SUCCESS":
-            return {
-                ...state,
-                isLoading: false,
-                currentStudent: action.payload
-            }
-        case "GET_ONE_STUDENT_ERROR":
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload
-            }
-        case "ADD_STUDENT_START":
-            return {
-                ...state,
-                isLoading: true
-            }
-        case "ADDING_STUDENT_SUCCESS":
-            return {
-                ...state,
-                isLoading: false,
-                students: action.payload
-            };
-        case "ADDING_STUDENT_ERROR":
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload
-            };
-        case "EDIT_STUDENT_START":
-            return {
-                ...state,
-                isLoading: true,
-            };
-        case "EDIT_STUDENT_SUCCESS":
-            return {
-                ...state,
-                isLoading: false,
-            };
-        case "EDIT_STUDENT_ERROR":
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload
-            }  
-        default:
-            return state;
-    }
-}
-*/
-/*
-export const otherReducer = (state= initialState, action) => {
-    switch (action.type) {
-        case "GET_WORKERS_START":
-            return {
-                ...state,
-                isLoading: true
-            }
-        case "GET_WORKERS_SUCCESS":
-            return {
-                ...state,
-                isLoading: false,
-                workers: action.payload
-            }
-        case "CREATE_ORGS_LIST":
-            return {
-                ...state,
-                organizations: action.payload
-            }
-        case "GET_ADMINS_START":
-            return {
-                ...state,
-                isLoading: true
-            }
-        case "GET_ADMINS_SUCCESS":
-            return {
-                ...state,
-                isLoading: false,
-                admins: action.payload
-            }
-        default:
-            return state;
-    }
-}
-*/
