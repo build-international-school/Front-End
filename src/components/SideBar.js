@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
+import { Side } from './Styles.js';
+
 const SideBar = props => {
     const student = JSON.parse(localStorage.getItem("currentStudent"));
 
     switch (props.active) {
         case "main":
             return (
-                <>
+                <Side>
                     <div className="side-head">
                         <h3>Page Tracker</h3>
                     </div>
@@ -39,11 +41,11 @@ const SideBar = props => {
                     <div className="side">
                         <Link to="/add-student2"><p>Add Student</p></Link>
                     </div>
-                </>
+                </Side>
             );
         case "visits":
             return (
-                <>
+                <Side>
                     <div className="side-head">
                         <h3>Page Tracker</h3>
                     </div>
@@ -75,11 +77,11 @@ const SideBar = props => {
                     <div className="side">
                         <Link to="/add-student2"><p>Add Student</p></Link>
                     </div>
-                </>
+                </Side>
             );
         case "list":
             return (
-                <>
+                <Side>
                     <div className="side-head">
                         <h3>Page Tracker</h3>
                     </div>
@@ -111,11 +113,11 @@ const SideBar = props => {
                     <div className="side">
                         <Link to="/add-student2"><p>Add Student</p></Link>
                     </div>
-                </>
+                </Side>
             );
         case "student":
             return (
-                <>
+                <Side>
                     <div className="side-head">
                         <h3>Page Tracker</h3>
                     </div>
@@ -147,11 +149,11 @@ const SideBar = props => {
                     <div className="side">
                         <Link to="/add-student2"><p>Add Student</p></Link>
                     </div>
-                </>
+                </Side>
             )
         case "edit":
             return (
-                <>
+                <Side>
                     <div className="side-head">
                         <h3>Page Tracker</h3>
                     </div>
@@ -183,11 +185,11 @@ const SideBar = props => {
                     <div className="side">
                         <Link to="/add-student2"><p>Add Student</p></Link>
                     </div>
-                </>
+                </Side>
             )
         case "add":
             return (
-                <>
+                <Side>
                     <div className="side-head">
                         <h3>Page Tracker</h3>
                     </div>
@@ -219,11 +221,11 @@ const SideBar = props => {
                     <div className="side-active">
                         <Link to="/add-student2"><p>Add Student</p></Link>
                     </div>
-                </>
+                </Side>
             )
         default:
             return (
-                <>
+                <Side>
                     <div className="side-head">
                         <h3>Page Tracker</h3>
                     </div>
@@ -255,7 +257,7 @@ const SideBar = props => {
                     <div className="side">
                         <Link to="/add-student2"><p>Add Student</p></Link>
                     </div>
-                </>
+                </Side>
             );
     }
 }

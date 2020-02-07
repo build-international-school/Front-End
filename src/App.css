@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Crimson Text', serif;
 }
 
 a {
@@ -7,44 +8,18 @@ a {
   color: black;
 }
 
-.top-label {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+.side a {
+  font-size: 1.15rem;
 }
 
-.students-container {
-  margin: 0 auto;
-  border: 2px solid grey;
-  padding: 2%;
+.side-active a {
+  color: #ec4c4c;
+  font-weight: bold;
+  font-size: 1.25rem;
 }
 
 .students-container h1 {
   font-size: 3rem;
-}
-
-.student-list {
-  margin: 0 auto;
-  padding: 2%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 80%;
-  border: 1px solid blue;
-}
-
-.student-div {
-  margin: 1%;
-  width: 25%;
-  border: 1px solid pink;
-}
-
-.all-students {
-  margin: 0 auto;
-  height: 150px;
-  width: 100%;
-  border: 1px solid grey;
-  overflow-y: scroll;
 }
 
 .student-header {
@@ -52,55 +27,16 @@ a {
   top: 0;
 }
 
-.main-page-div {
-  display: flex;
-  width: 95%;
-  align-items: flex-end;
-  justify-content: space-between;
-}
 .placement {
   width: 15%;
 }
 
-.side a {
-  color: blue;
-}
 
-.side-active a {
-  color: orangered;
-}
-
-.main-info {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-}
-
-.main-info-top {
-  display: flex;
-  justify-content: space-between;
-}
-
-.org-div {
-  width: 45%
-}
-
-.visit-div {
-  border: 1px solid grey;
-  width: 40%;
-}
-.total-div {
-  border: 1px solid grey;
-  width: 10%;
-  margin: 0 0 0 5%;
-}
 
 .student-image img {
   width: 300px;
   border: 1px solid green;
-  padding: 1%;
-}
+  padding: 1%;}
 
 .icon img {
   width: 2%;

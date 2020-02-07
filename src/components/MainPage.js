@@ -3,16 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import Nav from './Nav';
 import { getStudents, getWorkers, getAdmins, createOrgsList } from '../actions';
 import SideBar from './SideBar';
+import { MainDiv, InfoBox, InfoTop, MainOrg, MainVisit, MainTotal, AllStudents, Table, TableRow, TableHeader } from './Styles.js';
 
 const MainPage = props => {
-    const handleSignout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("currentUser");
-        localStorage.removeItem("allStudents");
-    }
-
     const user = JSON.parse(localStorage.getItem("currentUser"));
     console.log("User: ", user);
 
@@ -47,27 +43,21 @@ const MainPage = props => {
     console.log("Visits: ", props.visits);
 
     return(
-        <div className="main-page-div">
-            <div className="top-label">
-                {user && 
-                    <p>Hello, {user.first_name} | <a href="/login" onClick={handleSignout}>Log Out</a></p>
-                }
-                {!user && 
-                    <p>Hello! | <a href="/login" onClick={handleSignout}>Log Out</a></p>
-                }
-            </div>
+        <>
+        <Nav />
+        <MainDiv>
             <div className="placement">
                 <SideBar active={"main"} />
             </div>
-            <div className="main-info">
-                <div className="main-info-top">
-                    <div className="org-div">
+            <InfoBox>
+                <InfoTop>
+                    <MainOrg>
                         {/*removed {user.organization} and replaced with Lambda School*/}
                         <h2>{user.organization}</h2>
-                    </div>
-                    <div className="visit-div">
+                    </MainOrg>
+                    <MainVisit className="visit-div">
                         <h3>Worker Visits:</h3>
-                        <table>
+                        <Table>
                             <tr>
                                 <th>First Name</th>
                                 <th>Last Name</th>
@@ -87,31 +77,32 @@ const MainPage = props => {
                                 </tr>
                             ))
                         }
-                        </table>
-                        <p>No recent visits.</p>
-                    </div>
-                    <div className="total-div">
+                        </Table>
+                        {!props.visits && <p>No recent visits.</p>}
+                        
+                    </MainVisit>
+                    <MainTotal>
+                        {/* Make h1 have less space around it */}
                         <h1>{props.students.length}</h1>
                         <p>Total Students</p>
-                    </div>
-                </div>
-                <div>        
-                    <div className="all-students">
+                    </MainTotal>
+                </InfoTop>      
+                    <AllStudents>
                         <div className="student">
-                            <table>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Status</th>
-                                    <th>Grade</th>
-                                    <th>Age</th>
-                                    <th>Representative</th>
-                                    <th>Contact</th>
-                                    <th>Special Needs</th>
-                                </tr>
+                            <Table>
+                                <TableRow>
+                                    <TableHeader>Name</TableHeader>
+                                    <TableHeader>Status</TableHeader>
+                                    <TableHeader>Grade</TableHeader>
+                                    <TableHeader>Age</TableHeader>
+                                    <TableHeader>Representative</TableHeader>
+                                    <TableHeader>Contact</TableHeader>
+                                    <TableHeader>Special Needs</TableHeader>
+                                </TableRow>
                             {props.students && 
                             !props.isLoading && 
                             props.students.map(student => (
-                                <tr>
+                                <TableRow>
                                     <td>{student.last_name}, {student.first_name}</td>
                                     <td>{student.status}</td>
                                     <td>{student.grade}</td>
@@ -119,14 +110,14 @@ const MainPage = props => {
                                     <td>{student.representative_name}</td>
                                     <td>{student.representative_contact}</td>
                                     <td>{student.special_needs}</td>
-                                </tr>
+                                </TableRow>
                         ))}
-                            </table>
+                            </Table>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </AllStudents>
+            </InfoBox>
+        </MainDiv>
+        </>
     )
 }
 

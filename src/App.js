@@ -31,17 +31,12 @@ function App() {
         <Route exact path='/create-user' component={CreateUser} />
         <PrivateRoute exact path='/main' component={MainPage} />
         <PrivateRoute exact path='/visits' component={Visits} />
-        <AdminRoute exact path='/students' component={StudentsList} />
-        <AdminRoute exact path='/students2' component={StudentsList2} />
-        {/* <PrivateRoute exact path='/students/:id' component={Student} /> */}
+        <PrivateRoute exact path='/students' component={StudentsList} />
         <AdminRoute exact path='/student2/:id' component={Student2} />
-        {/* <PrivateRoute exact path='/add_student' component={AddStudent} /> */}
+        <PrivateRoute exact path='/students2' component={StudentsList2} />
         <AdminRoute exact path='/add-student2' component={AddStudent2} />
         <AdminRoute exact path='/edit-student/:id' component={EditStudent} />
       </div>
-      <footer>
-        <Link to="/students">Students</Link>
-      </footer>
     </Router>
   );
 }

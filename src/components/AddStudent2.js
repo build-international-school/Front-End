@@ -6,13 +6,11 @@ import { connect } from 'react-redux';
 import { addStudent } from '../actions';
 import SideBar from './SideBar';
 
-const AddStudent2 = props => {
-    const handleSignout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("currentUser");
-        localStorage.removeItem("allStudents");
-    }
+import Nav from './Nav';
 
+import { MainEditDiv, EditDiv, VisitForm, Label, Select, EditInput, EditTextarea, Button } from './Styles.js';
+
+const AddStudent2 = props => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
     console.log("User: ", user);
 
@@ -112,20 +110,17 @@ const AddStudent2 = props => {
     }
 
     return(
-        <div className ="form-container">
-            <div className="top-label">
-                <p>Hello, {user.first_name} | <a href="/login" onClick={handleSignout}>Log Out</a></p>
-            </div>
+        <>
+        <Nav />
+        <MainEditDiv>
             <div className="placement">
                 <SideBar active={"add"} />
             </div>
-        
-            <form onSubmit={handleAdd}>
-                <div className="form-maininfo-div">
-                    <div className='form-name-div'>
-                        <label>
+            <EditDiv>
+            <VisitForm onSubmit={handleAdd}>
+                        <Label>
                             First Name:
-                            <input
+                            <EditInput
                                 type='text'
                                 name='first_name'
                                 onChange={handleFirstName}
@@ -133,10 +128,10 @@ const AddStudent2 = props => {
                                 placeholder='First Name'
                                 required
                             /> <span className="req">*</span>
-                        </label>
-                        <label>
+                        </Label>
+                        <Label>
                             Last Name:
-                            <input
+                            <EditInput
                                 type='text'
                                 name='last_name'
                                 onChange={handleLastName}
@@ -144,26 +139,21 @@ const AddStudent2 = props => {
                                 placeholder='Last Name'
                                 required
                             /> <span className="req">*</span>
-                        </label>
-                    </div>
-                    <div className='form-address-div'>
-                        <label>
+                        </Label>
+                        <Label>
                             Address:
-                            <input
-                                type='textarea'
+                            <EditTextarea
+                                wrap='soft'
                                 name='address'
                                 onChange={handleAddress}
                                 value={newAddress}
                                 placeholder='123 Street, City, ST, 0000'
                                 required
                             /> <span className="req">*</span>
-                        </label>
-                    </div>
-                </div>
-                <div className='form-number-div'>
-                    <label>
+                        </Label>
+                    <Label>
                         Grade:
-                        <input
+                        <EditInput
                             type='text'
                             name='grade'
                             onChange={handleGrade}
@@ -171,10 +161,10 @@ const AddStudent2 = props => {
                             placeholder='0'
                             required
                         /> <span className="req">*</span>
-                    </label>
-                    <label>
+                    </Label>
+                    <Label>
                         Age:
-                        <input
+                        <EditInput
                             type='number'
                             name='age'
                             onChange={handleAge}
@@ -182,13 +172,10 @@ const AddStudent2 = props => {
                             placeholder={0}
                             required
                         /> <span className="req">*</span>
-                    </label>
-                </div>
-                <div className='form-select-div'>
-                    <div className='form-insurance-div'>
-                        <label>
+                    </Label>
+                        <Label>
                             Insurance: 
-                            <select
+                            <Select
                                 name='insurance'
                                 onChange={handleInsurance}
                                 value={newInsurance}
@@ -197,23 +184,21 @@ const AddStudent2 = props => {
                                 <option value={3} disabled>Choose...</option>
                                 <option value={1}>Yes</option>
                                 <option value={0}>No</option>
-                            </select> <span className="req">*</span>
-                        </label>
-                        <label>
+                            </Select> <span className="req">*</span>
+                        </Label>
+                        <Label>
                             Expiration:
-                            <input
+                            <EditInput
                                 type='text'
                                 name='exp_date'
                                 onChange={handleExpiration}
                                 value={newExpiration}
                                 placeholder={'mm/dd/yyyy'}
                             />
-                        </label>
-                    </div>
-                    <div className='form-status-div'>
-                        <label>
+                        </Label>
+                        <Label>
                             Status: 
-                            <select
+                            <Select
                                 name='status'
                                 onChange={handleStatus}
                                 value={newStatus}
@@ -223,11 +208,11 @@ const AddStudent2 = props => {
                                 <option value="active">Active</option>
                                 <option value="alumni">Alumni</option>
                                 <option value="visitor">Visitor</option>
-                            </select> <span className="req">*</span>
-                        </label>
-                        <label>
+                            </Select> <span className="req">*</span>
+                        </Label>
+                        <Label>
                             Birth Certificate:
-                            <select
+                            <Select
                                 name='birth_certificate'
                                 onChange={handleBirthCert}
                                 value={newBirthCert}
@@ -236,38 +221,33 @@ const AddStudent2 = props => {
                                 <option value={3} disabled>Choose...</option>
                                 <option value={1}>Yes</option>
                                 <option value={0}>No</option>
-                            </select> <span className="req">*</span>
-                        </label>
-                    </div>
-                </div>
-                <div className='form-textarea-div'>
-                    <label>
+                            </Select> <span className="req">*</span>
+                        </Label>
+                    <Label>
                         Background:
-                        <input
-                            type='textarea'
+                        <EditTextarea
+                            wrap='soft'
                             name='background'
                             onChange={handleBackground}
                             value={newBackground}
                             placeholder="Information about home life, why they're here, what they are good at, and what they are not."
                             required
                         /> <span className="req">*</span>
-                    </label>
-                    <label>
+                    </Label>
+                    <Label>
                         Special Needs:
-                        <input
-                            type='textarea'
+                        <EditTextarea
+                            wrap='soft'
                             name='special_needs'
                             onChange={handleSpecialNeeds}
                             value={newSpecialNeeds}
                             placeholder="none | Information about IEP, or disabilities."
                             required
                         /> <span className="req">*</span>
-                    </label>
-                </div>
-                <div className='form-rep-div'>
-                    <label>
+                    </Label>
+                    <Label>
                         Representative:
-                        <input
+                        <EditInput
                             type='textarea'
                             name='representative_name'
                             onChange={handleRepresentative}
@@ -275,10 +255,10 @@ const AddStudent2 = props => {
                             placeholder="Name, relationship"
                             required
                         /> <span className="req">*</span>
-                    </label>
-                    <label>
+                    </Label>
+                    <Label>
                         Contact Information:
-                        <input
+                        <EditInput
                             type='textarea'
                             name='representative_contact'
                             onChange={handleContact}
@@ -286,11 +266,12 @@ const AddStudent2 = props => {
                             placeholder='111-222-3333'
                             required
                         /> <span className="req">*</span>
-                    </label>
-                </div>
-                <button>Add!</button>
-            </form>
-        </div>
+                    </Label>
+                <Button>Add!</Button>
+            </VisitForm>
+            </EditDiv>
+        </MainEditDiv>
+        </>
     )
 }
 
