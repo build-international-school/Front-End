@@ -2,46 +2,44 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useParams } from 'react-router-dom';
+import styled from "styled-components";
+
+const StudentCard = styled.div`
+height: 200px:
+width: 100px;
+padding: 10px;
+background-color: pink;
+border-style: solid;
+border-width: 3px;
+border-color: black; 
+border-radius:5px;
+
+`;
+
 
 const Student =  props => {
-    console.log("first name",props)
-    // const [student, setStudent] = useState();
-    // let {id} = useParams();
-
-    //  useEffect(() =>{
-
-    //     axiosWithAuth
-    //     .get(`https://issw.herokuapp.com/api/students/${id}`)
-        
-    //     .then(response => {
-    //         console.log("Here is the response",response)
-    //         setStudent(response.data);
-    //     })
-    //     .catch(error => {
-    //         console.error(error);
-    //     });
-    // },[id]);
+    console.log("student card props",props);
 
 
-
-// const { first_name, last_name, grade, age, status } = student; 
-//     console.log("In Student: ", props.student);
-
-    console.log("In Student: ", props);
 
     return (
+        <div>
+{/* {props.students.map(student =>( */}
+    <StudentCard>
+        <h2>{props.student.first_name}</h2>
+        <h2>{props.student.last_name}</h2>
         
-        <div className="save-wrapper">
-            <div className="student-card">
-                <h1>{props.first_name}</h1>
+    </StudentCard>
 
-                {/* <h2>{first_name}</h2>
-                <h2>{last_name}</h2>
-                <p>grade: {grade}</p>
-                <p>age: {age}</p>
-                <p>status:{status}</p> */}
-            </div>
-        </div> 
+
+        
+        </div>
+
+
+
+
+
+        
     )
     
     }

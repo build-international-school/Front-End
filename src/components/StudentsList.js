@@ -1,49 +1,26 @@
 import React, { useEffect, useState } from "react";
-
+import { Link, Route } from 'react-router-dom';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Student from "./Student";
+import styled from "styled-components";
 
-// const dummyStudents =[
-//     {
-//         id: 1,
-//         first_name: 'Mandi',
-//         last_name: 'Haase',
-//         grade: '3',
-//         address: '111 Ever St., Alexandria, VA 00000',
-//         img_url: '',
-//         background: 'I have been learning programming for 2 months',
-//         status: 'active',
-//         age: '10',
-//         insurance: false,
-//         exp_date: '',
-//         birth_certificate: true,
-//         special_needs: 'no',
-//         representative_name: '',
-//         representative_contact: ''
-//     },
+const StudentDiv= styled.div`
+// background-color: blue;
+`;
 
-//     {
-//         id: 2,
-//         first_name: 'Jon',
-//         last_name: 'Haase',
-//         grade: '4',
-//         address: '222 Ever St., Alexandria, VA 00000',
-//         img_url: '',
-//         background: 'I have been learning programming for 3 months',
-//         status: 'active',
-//         age: '11',
-//         insurance: false,
-//         exp_date: '',
-//         birth_certificate: true,
-//         special_needs: 'no',
-//         representative_name: '',
-//         representative_contact: ''
-//     }
-// ]
-
+const  StudentCard=styled.div`
+// height: 200px:
+// width: 200px;
+// padding: 10px;
+// background-color: pink;
+// border-style: solid;
+// border-width: 3px;
+// border-color: black; 
+// border-radius:5px;
+`;
 const Students =() => {
     const [students, setStudents] =useState([]);
-    // const [searchResults, setSearchResults] =useState([])
+
 
 
 useEffect(()=> {
@@ -51,7 +28,7 @@ useEffect(()=> {
        axiosWithAuth()
         .get('https://issw.herokuapp.com/api/students')
         .then(response =>{
-            console.log(response.data);
+            console.log("This is from the axios call",response.data);
             setStudents(response.data);
         })
         .catch(error =>{
@@ -63,21 +40,20 @@ useEffect(()=> {
 
 console.log("students",students)
     return (
-<div className="student-list">
-        <Student first_name={students.first_name}/>
-        {/* {students.map(student => (
-        <div>
-        <h2>First Name: {student.first_name}</h2>
-        <h2>Last Name: {student.last_name}</h2>
-        <h3>Grade: {student.grade} | Age: {student.age}</h3>
-        <h3>Status: {student.status}</h3>
-        <p>{student.id}</p>
-        </div>
-
-        ))}; */}
-        
+<StudentDiv>
+    <StudentCard>
+    {students.map (student =>(
+        <Link to= {`/student/${student.id}`}>
+        <Student student={student}/>
+        </Link>
+     
+    )
+ 
+    )  
+    }
+      </StudentCard>
     
-</div>
+</StudentDiv>
     )
         };
 
