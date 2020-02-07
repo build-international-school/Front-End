@@ -40,18 +40,12 @@ const onInputChange = event =>{
         [event.target.name]:event.target.value,
     });
 }
-    const handleChanges = event => {
-        
-        console.log(newStudent);
 
-        setNewStudent
-            (event.target.value)
-        ;
-    };
+
     const submitForm = event =>{
         event.preventDefault();
         // props.addStudent(newStudent);
-        setNewStudent({first_name:'', last_name:'', age:''})
+        setNewStudent({first_name:'', last_name:'', grade:'',address:'',age:''})
     };
     return(
         <form onSubmit={submitForm}>
@@ -76,20 +70,20 @@ const onInputChange = event =>{
                     onChange={onInputChange}
                     placeholder='Enter Age'
                     value={newStudent.age}/>
-            {/* <label htmlFor="grade">Grade</label>
+            <label htmlFor="grade">Grade</label>
             <input id='grade'
                     name='grade'
                     type='text'
                     onChange={onInputChange}
                     placeholder='Enter Grade'
-                    value={newStudent.grade}/> */}
-            {/* <label htmlFor="address">Address</label>
+                    value={newStudent.grade}/>
+            <label htmlFor="address">Address</label>
             <input id='address'
                     name='address'
                     type='text'
                     onChange={onInputChange}
                     placeholder='Enter Address'
-                    value={newStudent.address}/> */}
+                    value={newStudent.address}/>
             {/* <label htmlFor="background">Background</label>
             <input id='background'
                     name='background'
@@ -104,13 +98,13 @@ const onInputChange = event =>{
                     onChange={onInputChange}
                     placeholder='Enter Representative Name'
                     value={newStudent.representative_name}/> */}
-            <label htmlFor="representative_contact">Representative Phone Number</label>
+            {/* <label htmlFor="representative_contact">Representative Phone Number</label>
             <input id='representative_contact'
                     name='representative_contact'
-                    type='tel'
+                    type='text'
                     onChange={onInputChange}
                     placeholder='Enter Representative Phone Number'
-                    value={newStudent.representative_contact}/>
+                    value={newStudent.representative_contact}/> */}
             <label htmlFor='statusSelect'>Status</label>
             <select id='statusSelect' name='studentStatus'>
                 <option value='1'>Active</option>

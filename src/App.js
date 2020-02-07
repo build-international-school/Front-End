@@ -51,7 +51,6 @@ function App() {
         {/* <PrivateRoute exact path='/students/:id' component={Student} /> */}
 
         <PrivateRoute exact path='/student/:id' component={StudentDetails} /> 
-        <PrivateRoute path='/main' component={MainPage} />
         <PrivateRoute exact path='/add-student' component={AddStudent} />
         <AdminRoute exact path='/student2/:id' component={Student2} />
         {/* <PrivateRoute exact path='/add_student' component={AddStudent} /> */}
