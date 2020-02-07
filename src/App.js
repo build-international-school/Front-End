@@ -38,6 +38,9 @@ function App() {
         <AdminRoute exact path='/add-student2' component={AddStudent2} />
         <AdminRoute exact path='/edit-student/:id' component={EditStudent} />            
       </div>
+      <footer>
+        <Link to="/students">Students</Link>
+      </footer>
     </Router>
   );
 }
