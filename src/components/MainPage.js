@@ -6,11 +6,10 @@ import { connect } from 'react-redux';
 import Nav from './Nav';
 import { getStudents, getWorkers, getAdmins, createOrgsList } from '../actions';
 import SideBar from './SideBar';
-import { MainDiv, InfoBox, InfoTop, MainOrg, MainVisit, MainTotal, AllStudents, Table, TableRow, TableHeader } from './Styles.js';
+import { MainDiv, InfoBox, InfoTop, MainOrg, MainVisit, MainTotal, AllStudents, Table, TableRow, TableHeader, Err } from './Styles.js';
 
 const MainPage = props => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
-    console.log("User: ", user);
 
     useEffect(() => {
         props.getWorkers();
@@ -37,14 +36,10 @@ const MainPage = props => {
         props.getStudents();   
     }, [])
 
-    // console.log("ORGANIZATIONS in main: ", props.organizations);
-    // console.log("Workers: ", props.workers);
-    // console.log("Admins: ", props.admins);
-    console.log("Visits: ", props.visits);
-
     return(
         <>
         <Nav />
+        {props.error && <Err><h5>Uh Oh! Something didn't work! Error: {props.error} </h5></Err>}
         <MainDiv>
             <div className="placement">
                 <SideBar active={"main"} />

@@ -7,11 +7,10 @@ import Nav from './Nav';
 import { addVisit } from '../actions';
 import SideBar from './SideBar';
 
-import { MainVisitDiv, VisitDiv, VisitForm, Label, Select, Input, Button } from './Styles.js';
+import { MainVisitDiv, VisitDiv, VisitForm, Label, Select, Input, Button, Err } from './Styles.js';
 
 const Visits = props => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
-    console.log("User: ", user);
 
     const [type, setType] = useState(user.type);
     const [workerFirstName, setWorkerFirstName] = useState(user.first_name);
@@ -57,6 +56,7 @@ const Visits = props => {
     return (
         <>
         <Nav />
+        {props.error && <Err><h5>Uh Oh! Something didn't work! Error: {props.error} </h5></Err>}
         <MainVisitDiv>
             <div className="placement">
                 <SideBar active={"visits"} />

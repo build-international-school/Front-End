@@ -31,8 +31,6 @@ a {
   width: 15%;
 }
 
-
-
 .student-image img {
   width: 300px;
   border: 1px solid green;
@@ -46,4 +44,5 @@ a {
   color: red;
   font-weight: bold;
   font-size: 0.9rem;
+  
 }

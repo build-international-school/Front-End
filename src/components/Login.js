@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { loginUser } from '../actions';
 import NavInit from './NavInit';
 
+import { Err } from './Styles.js';
+
 
 const Login = props => {
     const [loginEmail, setLoginEmail] = useState('');
@@ -31,6 +33,7 @@ const Login = props => {
     return(
         <div>
             <NavInit />
+            {props.error && <Err><h5>Uh Oh! Something didn't work! Error: {props.error} </h5></Err>}
             <h1>Login Existing User</h1>
             <form onSubmit={handleLogin}>
                 <div>

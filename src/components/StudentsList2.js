@@ -10,11 +10,10 @@ import { getOneStudent } from '../actions';
 import SideBar from './SideBar';
 import plus from '../images/plus.svg';
 
-import { MainDiv, StudentsDiv, AllList, StudentCard } from './Styles.js';
+import { MainDiv, StudentsDiv, AllList, StudentCard, Err } from './Styles.js';
 
 const StudentsList2 = props => {
     const user = JSON.parse(localStorage.getItem("currentUser"));
-    console.log("User: ", user);
 
     useEffect(() => {
         props.getStudents();
@@ -31,6 +30,7 @@ const StudentsList2 = props => {
     return (
         <>
         <Nav />
+        {props.error && <Err><h5>Uh Oh! Something didn't work! Error: {props.error} </h5></Err>}
         <MainDiv>
             <div className="placement">
                 <SideBar active={"list"} />

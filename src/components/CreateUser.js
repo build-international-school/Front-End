@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { addUser } from '../actions';
 import NavInit from './NavInit';
-
+import { Err } from './Styles.js';
 
 const CreateUser = props => {
     const orgs = JSON.parse(localStorage.getItem("orgs"));
@@ -58,7 +58,6 @@ const CreateUser = props => {
         e.preventDefault();
         //axios POST here to create a user to https://issw.herokuapp.com/api/auth/register
         if (newPassword === verify) {
-            console.log(newData);
             props.addUser(props, newData);
         } else {
             console.log("The passwords must match!");
@@ -69,6 +68,7 @@ const CreateUser = props => {
     return (
         <div>
             <NavInit />
+            {props.error && <Err><h5>Uh Oh! Something didn't work! Error: {props.error} </h5></Err>}
             <h1>Create a New User Account</h1>
             <form onSubmit={handleAddUser}>
                 <div>

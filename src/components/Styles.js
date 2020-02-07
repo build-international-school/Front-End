@@ -243,3 +243,14 @@ export const LogOutDiv = styled.div`
 export const LogOut = styled.p`
     font-size: 1.5rem;
 `;
+
+// Error
+export const Err = styled.div`
+    margin: 0 auto;
+    padding: 5px;
+    background-color: rgba(255, 69, 0, 0.5);
+    font-weight: bold,
+    color: black
+    width: 25%;
+    font-size: 1.15rem;
+`;
